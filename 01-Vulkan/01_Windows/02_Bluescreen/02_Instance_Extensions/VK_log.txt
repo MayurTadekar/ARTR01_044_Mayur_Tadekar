@@ -1,0 +1,31 @@
+WndProc()   =>  Program Started Successfully
+FillInstanceExtensionNames()  =>  function started
+FillInstanceExtensionNames()   =>  vkEnumerateInstanceExtensionProperties() Successful - First Call
+FillInstanceExtensionNames()   =>  vkEnumerateInstanceExtensionProperties() Successful - Second Call
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_device_group_creation
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_display
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_external_fence_capabilities
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_external_memory_capabilities
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_external_semaphore_capabilities
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_get_display_properties2
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_get_physical_device_properties2
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_get_surface_capabilities2
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_surface
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_surface_protected_capabilities
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_win32_surface
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_EXT_debug_report
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_EXT_debug_utils
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_EXT_direct_mode_display
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_EXT_surface_maintenance1
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_EXT_swapchain_colorspace
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_NV_external_memory_capabilities
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_KHR_portability_enumeration
+FillInstanceExtensionNames()    =>  Vulkan Extension Name = VK_LUNARG_direct_driver_loading
+FillInstanceExtensionNames()    =>  VK_KHR_SURFACE_EXTENSION_NAME found successfully
+FillInstanceExtensionNames()    =>  VK_KHR_WIN32_SURFACE_EXTENSION_NAME found successfully
+FillInstanceExtensionNames()    =>  Enabled vulkan instance extension name = VK_KHR_surface
+FillInstanceExtensionNames()    =>  Enabled vulkan instance extension name = VK_KHR_win32_surface
+FillInstanceExtensionNames()    =>  function completed
+Initialize()   =>  FillInstanceExtensionNames() Successful
+WinMain()   =>  Initialize() Successful
+Uninitialize()  =>  Program Terminated Successfully

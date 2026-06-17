@@ -1,0 +1,2 @@
+WndProc() >> Program Started Successfully
+Uninitialize() >> Program Terminated Successfully

@@ -1,0 +1,39 @@
+WndProc()   =>  program started successfully
+Initialize()    =>  function started
+CreateVulkanInstance()    =>  function started
+FillInstanceExtensionNames()  =>  function started
+FillInstanceExtensionNames()   =>  vkEnumerateInstanceExtensionProperties() successful - first call
+FillInstanceExtensionNames()   =>  vkEnumerateInstanceExtensionProperties() successful - second call
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_device_group_creation
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_display
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_external_fence_capabilities
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_external_memory_capabilities
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_external_semaphore_capabilities
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_get_display_properties2
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_get_physical_device_properties2
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_get_surface_capabilities2
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_surface
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_surface_protected_capabilities
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_win32_surface
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_EXT_debug_report
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_EXT_debug_utils
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_EXT_direct_mode_display
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_EXT_surface_maintenance1
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_EXT_swapchain_colorspace
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_NV_external_memory_capabilities
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_KHR_portability_enumeration
+FillInstanceExtensionNames()    =>  vulkan extension name = VK_LUNARG_direct_driver_loading
+FillInstanceExtensionNames()    =>  VK_KHR_SURFACE_EXTENSION_NAME found successfully
+FillInstanceExtensionNames()    =>  VK_KHR_WIN32_SURFACE_EXTENSION_NAME found successfully
+FillInstanceExtensionNames()    =>  Enabled vulkan instance extension name = VK_KHR_surface
+FillInstanceExtensionNames()    =>  Enabled vulkan instance extension name = VK_KHR_win32_surface
+FillInstanceExtensionNames()    =>  function completed
+CreateVulkanInstance()   =>  FillInstanceExtensionNames() successful
+CreateVulkanInstance()   =>  vkCreateInstance() successful
+CreateVulkanInstance()    =>  function completed
+Initialize()   =>  CreateVulkanInstance() successful
+Initialize()    =>  function completed
+WinMain()   =>  Initialize() successful
+Uninitialize()  =>  function started
+Uninitialize()  =>  vkDestroyInstance() successfully
+Uninitialize()  =>  program terminated successfully
