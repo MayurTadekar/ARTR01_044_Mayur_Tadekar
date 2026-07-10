@@ -14,6 +14,7 @@ FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_physical_device_properties2
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_surface_capabilities2
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface_maintenance1
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface_protected_capabilities
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_win32_surface
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_debug_report
@@ -38,11 +39,10 @@ FillValidationLayerNames()   =>  vkEnumerateInstanceLayerProperties() successful
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_NV_optimus
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_NV_present
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_OBS_HOOK
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_RENDERDOC_Capture
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_EOS_Overlay
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_VALVE_steam_overlay
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_VALVE_steam_fossilize
-FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_EOS_Overlay
-FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_EOS_Overlay
-FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_ROCKSTAR_GAMES_social_club
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_api_dump
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_gfxreconstruct
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_KHRONOS_synchronization2
@@ -85,7 +85,7 @@ PrintVkInfo()    >>>  function started
                      Vulkan Info
 **************************************************************************
 
-API Version = 1.4.303
+API Version = 1.4.325
 Device Name = NVIDIA GeForce RTX 4060
 Device Type = Discrete GPU(dGPU)
 Vendor ID = 0x10DE
@@ -100,7 +100,7 @@ CreateVulkanDevice()  >>>  function started
 FillDeviceExtensionNames()  >>>  function started
 FillDeviceExtensionNames()   =>  vkEnumerateDeviceExtensionProperties() successful - first call
 FillDeviceExtensionNames()   =>  vkEnumerateDeviceExtensionProperties() successful - second call
-FillDeviceExtensionNames()   =>  number of found device extension count = 248
+FillDeviceExtensionNames()   =>  number of found device extension count = 263
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_16bit_storage
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_8bit_storage
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_acceleration_structure
@@ -113,6 +113,7 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_copy_com
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_create_renderpass2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_dedicated_allocation
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_deferred_host_operations
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_depth_clamp_zero_one
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_depth_stencil_resolve
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_descriptor_update_template
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_device_group
@@ -143,23 +144,30 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintena
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance5
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance6
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance7
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance8
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance9
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_map_memory2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_multiview
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_binary
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_executable_properties
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_library
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_id
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_id2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_mode_fifo_latest_ready
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_wait
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_wait2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_push_descriptor
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_query
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_maintenance1
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_pipeline
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_position_fetch
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_relaxed_block_layout
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_robustness2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_sampler_mirror_clamp_to_edge
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_sampler_ycbcr_conversion
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_separate_depth_stencil_layouts
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_atomic_int64
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_bfloat16
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_clock
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_draw_parameters
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_expect_assume
@@ -175,12 +183,15 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_s
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_subgroup_rotate
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_subgroup_uniform_control_flow
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_terminate_invocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_untyped_pointers
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_spirv_1_4
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_storage_buffer_storage_class
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain_maintenance1
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain_mutable_format
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_synchronization2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_timeline_semaphore
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_unified_image_layouts
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_uniform_buffer_standard_layout
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_variable_pointers
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_vertex_attribute_divisor
@@ -188,9 +199,11 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_de
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_h264
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_h265
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_queue
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_vp9
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_av1
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_h264
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_h265
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_intra_refresh
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_quantization_map
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_queue
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_maintenance1
@@ -273,6 +286,7 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_scalar_b
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_separate_stencil_usage
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_atomic_float
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_demote_to_helper_invocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_float8
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_image_atomic_int64
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_module_identifier
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_object
@@ -290,6 +304,7 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_vertex_a
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_vertex_input_dynamic_state
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_ycbcr_2plane_444_formats
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_ycbcr_image_arrays
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_zero_initialize_device_memory
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_acquire_winrt_display
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_clip_space_w_scaling
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_cluster_acceleration_structure
@@ -360,137 +375,4 @@ GetDeviceQueue()  >>>  function started
 GetDeviceQueue()  =>  vkGetDeviceQueue() successful
 GetDeviceQueue()  -->  function completed
 CreateSwapchain()  >>>  function started
-GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
-GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 7 format counts
-GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
-GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
-GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
-GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
-GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
-GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
-CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
-CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
-CreateSwapchain()    =>  minImageCount 2
-CreateSwapchain()    =>  maxImageCount 8
-CreateSwapchain()    =>  swapchain image width x height = 784 x 561
-CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
-GetPhysicalDevicePresentMode()  >>>  function started
-GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 5 presentModeCount
-GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 5 presentModeCount
-GetPhysicalDevicePresentMode()    =>  found 2 present mode
-GetPhysicalDevicePresentMode()    =>  found 3 present mode
-GetPhysicalDevicePresentMode()    =>  found 1 present mode
-GetPhysicalDevicePresentMode()    =>  found 0 present mode
-GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
-GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_MAILBOX_KHR for present mode
-GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
-GetPhysicalDevicePresentMode()  -->  function completed
-CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
-CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
-CreateSwapchain()  -->  function completed
-Initialize()    =>  CreateSwapchain() successful
-CreateImagesAndImageViews()  >>>  function started
-CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 2 swapchainImageCount
-CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 2 swapchainImageCount
-CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
-CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
-CreateImagesAndImageViews()  -->  function completed
-Initialize()    =>  CreateImagesAndImageViews() successful
-CreateCommandPool()  >>>  function started
-CreateCommandPool()    =>  vkCreateCommandPool() successful
-CreateCommandPool()  -->  function completed
-Initialize()    =>  CreateCommandPool() successful
-CreateCommandBuffers()  >>>  function started
-CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
-CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
-CreateCommandBuffers()  -->  function completed
-Initialize()    =>  CreateCommandBuffers() successful
-CreateVertexBuffer()  >>>  function started
-CreateVertexBuffer()    =>  vkCreateBuffer() successful 
-CreateVertexBuffer()    =>  vkAllocateMemory() successful 
-CreateVertexBuffer()    =>  vkBindBufferMemory() successful 
-CreateVertexBuffer()    =>  vkMapMemory() successful 
-CreateVertexBuffer()  -->  function completed
-Initialize()    =>  CreateVertexBuffer() successful
-CreateShaders()  >>>  function started
-CreateShaders()  -->  successful to open vertex shader spv file
-CreateShaders()  -->  successful to read vertex shader spv file
-CreateShaders()    =>  vkCreateShaderModule() successful for vertex shader 
-CreateShaders()    =>  vertex shader data successfully freed 
-CreateShaders()    =>  vertex shader module successfully created 
-CreateShaders()  -->  successful to open fragment shader spv file
-CreateShaders()  -->  successful to read fragment shader spv file
-CreateShaders()    =>  vkCreateShaderModule() successful for fragment shader 
-CreateShaders()    =>  fragment shader data successfully freed 
-CreateShaders()    =>  fragment shader module successfully created 
-CreateShaders()  -->  function completed
-Initialize()    =>  CreateShaders() successful
-CreateDescriptorSetLayout()  >>>  function started
-CreateDescriptorSetLayout()    =>  vkCreateDescriptorSetLayout() successful 
-CreateDescriptorSetLayout()  -->  function completed
-Initialize()    =>  CreateDescriptorSetLayout() successful
-CreatePipelineLayout()  >>>  function started
-CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
-CreatePipelineLayout()  -->  function completed
-Initialize()    =>  CreatePipelineLayout() successful
-CreateRenderPass()  >>>  function started
-CreateRenderPass()    =>  vkCreateRenderPass() successful 
-CreateRenderPass()  -->  function completed
-Initialize()    =>  CreateRenderPass() successful
-CreateFrameBuffers()  >>>  function started
-CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
-CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
-CreateFrameBuffers()  -->  function completed
-Initialize()    =>  CreateFrameBuffers() successful
-CreateSemaphores()  >>>  function started
-CreateSemaphores()    =>  vkCreateSemaphore() successful for vkSemaphore_backbuffer 
-CreateSemaphores()    =>  vkCreateSemaphore() successful for vkSemaphore_rendercomplete 
-CreateSemaphores()  -->  function completed
-Initialize()    =>  CreateSemaphores() successful
-CreateFences()  >>>  function started
-CreateFences()    =>  vkCreateFence() successful for iteration 0 
-CreateFences()    =>  vkCreateFence() successful for iteration 1 
-CreateFences()  -->  function completed
-Initialize()    =>  CreateFences() successful
-BuildCommandBuffers()  >>>  function started
-BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
-BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
-BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
-BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
-BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
-BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
-BuildCommandBuffers()  -->  function completed
-Initialize()    =>  BuildCommandBuffers() successful
-Initialize()    -->  function completed
-WinMain()   =>  Initialize() successful
-Uninitialize()  >>>  function started
-Uninitialize()  =>  vkDeviceWaitIdle() is done
-Uninitialize()  =>  vkDestroyFence() successful for 0
-Uninitialize()  =>  vkDestroyFence() successful for 1
-Uninitialize()  =>  vkFence_array freed successfully
-Uninitialize()  =>  vkDestroySemaphore() successful for vkSemaphore_rendercomplete
-Uninitialize()  =>  vkDestroySemaphore() successful for vkSemaphore_backbuffer
-Uninitialize()  =>  vkDestroyFramebuffer() successful for 0
-Uninitialize()  =>  vkDestroyFramebuffer() successful for 1
-Uninitialize()  =>  vkFramebuffer_array freed successfully
-Uninitialize()  =>  vkDestroyPipelineLayout() successful
-Uninitialize()  =>  vkDestroyDescriptorSetLayout() successful
-Uninitialize()  =>  vkDestroyRenderPass() successful
-Uninitialize()  =>  vkDestroyShaderModule() successful for vkShaderModule_fragment_shader
-Uninitialize()  =>  vkDestroyShaderModule() successful for vkShaderModule_vertex_shader
-Uninitialize()  =>  vkFreeMemory() successful for vertexData_position.vkDeviceMemory
-Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_position.vkBuffer
-Uninitialize()  =>  vkFreeCommandBuffers() successful for 0
-Uninitialize()  =>  vkFreeCommandBuffers() successful for 1
-Uninitialize()  =>  vkCommandBuffer_array freed successfully
-Uninitialize()  =>  vkDestroyCommandPool() successful
-Uninitialize()  =>  vkDestroyImageView() successful for 0
-Uninitialize()  =>  vkDestroyImageView() successful for 1
-Uninitialize()  =>  swapchainImageView_array freed successfully
-Uninitialize()  =>  swapchainImage_array freed successfully
-Uninitialize()  =>  vkDestroySwapchainKHR() successful
-Uninitialize()  =>  vkDestroy() successful 
-Uninitialize()  =>  vkDestroySurfaceKHR() successful
-Uninitialize()  =>  vkDestroyDebugReportCallbackEXT_fnptr() successful
-Uninitialize()  =>  vkDestroyInstance() successful
-Uninitialize()  -->  program terminated successfully
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>

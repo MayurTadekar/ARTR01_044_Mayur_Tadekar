@@ -1,3 +1,0 @@
-#include "VK.h"
-
-IDI_ICON		ICON 	"./mylogo.ico"

@@ -14,6 +14,7 @@ FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_physical_device_properties2
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_surface_capabilities2
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface_maintenance1
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface_protected_capabilities
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_win32_surface
 FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_debug_report
@@ -38,11 +39,10 @@ FillValidationLayerNames()   =>  vkEnumerateInstanceLayerProperties() successful
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_NV_optimus
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_NV_present
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_OBS_HOOK
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_RENDERDOC_Capture
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_EOS_Overlay
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_VALVE_steam_overlay
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_VALVE_steam_fossilize
-FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_EOS_Overlay
-FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_EOS_Overlay
-FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_ROCKSTAR_GAMES_social_club
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_api_dump
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_gfxreconstruct
 FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_KHRONOS_synchronization2
@@ -85,7 +85,7 @@ PrintVkInfo()    >>>  function started
                      Vulkan Info
 **************************************************************************
 
-API Version = 1.4.303
+API Version = 1.4.325
 Device Name = NVIDIA GeForce RTX 4060
 Device Type = Discrete GPU(dGPU)
 Vendor ID = 0x10DE
@@ -100,7 +100,7 @@ CreateVulkanDevice()  >>>  function started
 FillDeviceExtensionNames()  >>>  function started
 FillDeviceExtensionNames()   =>  vkEnumerateDeviceExtensionProperties() successful - first call
 FillDeviceExtensionNames()   =>  vkEnumerateDeviceExtensionProperties() successful - second call
-FillDeviceExtensionNames()   =>  number of found device extension count = 248
+FillDeviceExtensionNames()   =>  number of found device extension count = 263
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_16bit_storage
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_8bit_storage
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_acceleration_structure
@@ -113,6 +113,7 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_copy_com
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_create_renderpass2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_dedicated_allocation
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_deferred_host_operations
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_depth_clamp_zero_one
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_depth_stencil_resolve
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_descriptor_update_template
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_device_group
@@ -143,23 +144,30 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintena
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance5
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance6
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance7
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance8
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance9
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_map_memory2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_multiview
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_binary
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_executable_properties
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_library
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_id
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_id2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_mode_fifo_latest_ready
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_wait
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_wait2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_push_descriptor
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_query
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_maintenance1
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_pipeline
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_position_fetch
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_relaxed_block_layout
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_robustness2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_sampler_mirror_clamp_to_edge
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_sampler_ycbcr_conversion
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_separate_depth_stencil_layouts
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_atomic_int64
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_bfloat16
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_clock
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_draw_parameters
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_expect_assume
@@ -175,12 +183,15 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_s
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_subgroup_rotate
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_subgroup_uniform_control_flow
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_terminate_invocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_untyped_pointers
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_spirv_1_4
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_storage_buffer_storage_class
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain_maintenance1
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain_mutable_format
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_synchronization2
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_timeline_semaphore
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_unified_image_layouts
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_uniform_buffer_standard_layout
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_variable_pointers
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_vertex_attribute_divisor
@@ -188,9 +199,11 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_de
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_h264
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_h265
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_queue
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_vp9
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_av1
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_h264
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_h265
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_intra_refresh
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_quantization_map
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_queue
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_maintenance1
@@ -273,6 +286,7 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_scalar_b
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_separate_stencil_usage
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_atomic_float
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_demote_to_helper_invocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_float8
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_image_atomic_int64
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_module_identifier
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_object
@@ -290,6 +304,7 @@ FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_vertex_a
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_vertex_input_dynamic_state
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_ycbcr_2plane_444_formats
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_ycbcr_image_arrays
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_zero_initialize_device_memory
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_acquire_winrt_display
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_clip_space_w_scaling
 FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_cluster_acceleration_structure
@@ -409,7 +424,7 @@ CreateVertexBuffer()  >>>  function started
 CreateVertexBuffer()    =>  vkCreateBuffer() successful 
 CreateVertexBuffer()    =>  vkAllocateMemory() successful 
 CreateVertexBuffer()    =>  vkBindBufferMemory() successful 
-CreateVertexBuffer()    =>  vkBindBufferMemory() successful 
+CreateVertexBuffer()    =>  vkMapMemory() successful 
 CreateVertexBuffer()  -->  function completed
 Initialize()    =>  CreateVertexBuffer() successful
 CreateRenderPass()  >>>  function started

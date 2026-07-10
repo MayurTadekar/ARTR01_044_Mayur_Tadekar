@@ -1,9 +1,5 @@
 cls
 
-glslangValidator -V -o shader.vert.spv shader.vert
-
-glslangValidator -V -o shader.frag.spv shader.frag
-
 cl /EHsc /I C:\VulkanSDK\Vulkan\Include /c VK.c
 
 rc VK.rc
