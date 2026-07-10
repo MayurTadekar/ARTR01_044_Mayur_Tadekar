@@ -699,7 +699,7 @@ VkResult Initialize(void)
     // FINALLY GIVING BLUE COLOR - Analogous to glClearColor;
     vkClearColorValue.float32[0] = 0.0f;
     vkClearColorValue.float32[1] = 0.0f;
-    vkClearColorValue.float32[2] = 1.0f;
+    vkClearColorValue.float32[2] = 0.0f;
     vkClearColorValue.float32[3] = 1.0f;
 
     // Build Command Buffers
