@@ -9,6 +9,7 @@
 
 // HEADERS
 #include <Windows.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -30,7 +31,25 @@
 // MACROS
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 600
+#define fprintf(stream, ...) logf((stream), __VA_ARGS__)
 #define NEWLINEINFILE (fprintf(gpLogFile, "\n"))
+
+static int logf(FILE *stream, const char *format, ...)
+{
+    va_list args;
+    int written;
+
+    va_start(args, format);
+    written = vfprintf(stream, format, args);
+    va_end(args);
+
+    if (stream)
+    {
+        fflush(stream);
+    }
+
+    return written;
+}
 
 // GLOBAL VARIABLES
 HWND ghwnd;
