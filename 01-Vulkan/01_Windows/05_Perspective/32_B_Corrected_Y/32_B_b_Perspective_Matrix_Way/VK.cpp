@@ -1,9 +1,8 @@
 /**************************************************
  * S.G.M.P
  * @file: VK.c
- * @brief: Step 32 B b
+ * @brief: Vulkan Triangle Perspective Matrix Way
  * @author: Mayur S. Tadekar(mrtadekar@gmail.com)
- * @Copyright ©2020-2025 MarshallingVoid
  * @date: 02 July 2025 (Wednesday) 10:36:41 PM
  **************************************************/
 
@@ -31,6 +30,8 @@
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 600
 #define NEWLINEINFILE (fprintf(gpLogFile, "\n"))
+
+#define WINDOW_TITLE "MST: Vulkan - Triangle Perspective Matrix Way"
 
 // GLOBAL VARIABLES
 HWND ghwnd;
@@ -231,7 +232,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 
     hwnd = CreateWindowEx(WS_EX_APPWINDOW,
                           szAppName,
-                          TEXT("MST: Vulkan"),
+                          TEXT(WINDOW_TITLE),
                           WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_OVERLAPPED | WS_THICKFRAME | WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS,
                           rcDesktop.right / 2 - WIN_WIDTH / 2,
                           rcDesktop.bottom / 2 - WIN_HEIGHT / 2,

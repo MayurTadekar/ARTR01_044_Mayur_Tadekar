@@ -1,11 +1,11 @@
-/**************************************************
+/***************************************************************************
  * S.G.M.P
- * @file: VK.c
- * @brief: Step 32 B b
+ * @file: VK.cpp
+ * @brief:
  * @author: Mayur S. Tadekar(mrtadekar@gmail.com)
- * @Copyright ©2020-2025 MarshallingVoid
- * @date: 10 July 2026 (Friday) 11:58:33 PM
- **************************************************/
+ * @copyright ©2020-2025 MarshallingVoid
+ * @date: Saturday 2026-07-11 5:49:52 PM
+ ***************************************************************************/
 
 // HEADERS
 #include <Windows.h>
@@ -33,6 +33,8 @@
 #define WIN_HEIGHT 600
 #define fprintf(stream, ...) logf((stream), __VA_ARGS__)
 #define NEWLINEINFILE (fprintf(gpLogFile, "\n"))
+
+#define WINDOW_TITLE "MST: Vulkan - Two 2D Shapes Rotation"
 
 static int logf(FILE *stream, const char *format, ...)
 {
@@ -193,7 +195,11 @@ VkDescriptorSet vkDescriptorSet_rectangle = VK_NULL_HANDLE;
 // Step 26 Pipeline
 VkViewport vkViewport;
 VkRect2D vkRect2D_scissor;
-VkPipeline vkPipeline = VK_NULL_HANDLE;
+VkPipeline vkPipeline_triangle = VK_NULL_HANDLE;
+VkPipeline vkPipeline_rectangle = VK_NULL_HANDLE;
+
+// For Rotation
+float rotationAngle = 0.0f;
 
 // FUNCTION SIGNATURE
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -252,7 +258,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 
     hwnd = CreateWindowEx(WS_EX_APPWINDOW,
                           szAppName,
-                          TEXT("MST: Vulkan"),
+                          TEXT(WINDOW_TITLE),
                           WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_OVERLAPPED | WS_THICKFRAME | WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS,
                           rcDesktop.right / 2 - WIN_WIDTH / 2,
                           rcDesktop.bottom / 2 - WIN_HEIGHT / 2,
@@ -306,7 +312,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
                     bDone = TRUE;
                 }
 
-                Update();
+                if (TRUE == bActiveWindow)
+                {
+                    Update();
+                }
                 vkResult = Display();
                 if (VK_FALSE != vkResult && VK_SUCCESS != vkResult)
                 {
@@ -445,7 +454,8 @@ VkResult Initialize(void)
     VkResult CreateDescriptorPool(void);
     VkResult CreateDescriptorSet(void);
     VkResult CreateRenderPass(void);
-    VkResult CreatePipeline(void);
+    // VkResult CreatePipeline(void);
+    VkResult CreatePipeline(VkPipeline *, VkPrimitiveTopology);
     VkResult CreateFrameBuffers(void);
     VkResult CreateSemaphores(void);
     VkResult CreateFences(void);
@@ -669,16 +679,28 @@ VkResult Initialize(void)
         fprintf(gpLogFile, "Initialize()    =>  CreateRenderPass() successful\n");
     }
 
-    // Create Pipeline
-    vkResult = CreatePipeline();
+    // Create Pipeline for Triangle
+    vkResult = CreatePipeline(&vkPipeline_triangle, VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
     if (VK_SUCCESS != vkResult)
     {
-        fprintf(gpLogFile, "Initialize()    =>  CreatePipeline() failed %d\n", vkResult);
+        fprintf(gpLogFile, "Initialize()    =>  CreatePipeline() failed %d for Triangle\n", vkResult);
         return (vkResult);
     }
     else
     {
-        fprintf(gpLogFile, "Initialize()    =>  CreatePipeline() successful\n");
+        fprintf(gpLogFile, "Initialize()    =>  CreatePipeline() successful for Triangle\n");
+    }
+
+    // Create Pipeline for Rectangle
+    vkResult = CreatePipeline(&vkPipeline_rectangle, VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
+    if (VK_SUCCESS != vkResult)
+    {
+        fprintf(gpLogFile, "Initialize()    =>  CreatePipeline() failed %d for Rectangle\n", vkResult);
+        return (vkResult);
+    }
+    else
+    {
+        fprintf(gpLogFile, "Initialize()    =>  CreatePipeline() successful for Rectangle\n");
     }
 
     // Create Frame Buffer
@@ -705,7 +727,7 @@ VkResult Initialize(void)
         fprintf(gpLogFile, "Initialize()    =>  CreateSemaphores() successful\n");
     }
 
-    // Create Semaphores
+    // Create Fences
     vkResult = CreateFences();
     if (VK_SUCCESS != vkResult)
     {
@@ -752,7 +774,8 @@ VkResult Resize(int width, int height)
     VkResult CreateCommandPool(void);
     VkResult CreatePipelineLayout(void);
     VkResult CreateRenderPass(void);
-    VkResult CreatePipeline(void);
+    // VkResult CreatePipeline(void);
+    VkResult CreatePipeline(VkPipeline *, VkPrimitiveTopology);
     VkResult CreateFrameBuffers(void);
     VkResult BuildCommandBuffers(void);
     VkResult CreateCommandBuffers(void);
@@ -827,12 +850,20 @@ VkResult Resize(int width, int height)
         fprintf(gpLogFile, "Resize()  =>  vkDestroyRenderPass() successful\n");
     }
 
-    // Destroy Pipeline
-    if (vkPipeline)
+    // Pipeline Triangle
+    if (vkPipeline_triangle)
     {
-        vkDestroyPipeline(vkDevice, vkPipeline, NULL);
-        vkPipeline = VK_NULL_HANDLE;
-        fprintf(gpLogFile, "Resize()  =>  vkDestroyPipeline() successful\n");
+        vkDestroyPipeline(vkDevice, vkPipeline_triangle, NULL);
+        vkPipeline_triangle = VK_NULL_HANDLE;
+        fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyPipeline() successful for Triangle\n");
+    }
+
+    // Pipeline Rectangle
+    if (vkPipeline_rectangle)
+    {
+        vkDestroyPipeline(vkDevice, vkPipeline_rectangle, NULL);
+        vkPipeline_rectangle = VK_NULL_HANDLE;
+        fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyPipeline() successful for Rectangle\n");
     }
 
     // Destroy Pipeline Layout
@@ -943,11 +974,27 @@ VkResult Resize(int width, int height)
         return (vkResult);
     }
 
-    // Create Pipeline
-    vkResult = CreatePipeline();
+    // // Create Pipeline
+    // vkResult = CreatePipeline();
+    // if (VK_SUCCESS != vkResult)
+    // {
+    //     fprintf(gpLogFile, "Resize()    =>  CreatePipeline() failed %d\n", vkResult);
+    //     return (vkResult);
+    // }
+
+    // Create Pipeline for Triangle
+    vkResult = CreatePipeline(&vkPipeline_triangle, VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
     if (VK_SUCCESS != vkResult)
     {
-        fprintf(gpLogFile, "Resize()    =>  CreatePipeline() failed %d\n", vkResult);
+        fprintf(gpLogFile, "Initialize()    =>  CreatePipeline() failed %d for Triangle\n", vkResult);
+        return (vkResult);
+    }
+
+    // Create Pipeline for Rectangle
+    vkResult = CreatePipeline(&vkPipeline_rectangle, VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
+    if (VK_SUCCESS != vkResult)
+    {
+        fprintf(gpLogFile, "Initialize()    =>  CreatePipeline() failed %d for Rectangle\n", vkResult);
         return (vkResult);
     }
 
@@ -1095,6 +1142,11 @@ VkResult Display(void)
 void Update(void)
 {
     // Code
+    rotationAngle += 0.01f;
+    if (rotationAngle >= 360.0f)
+    {
+        rotationAngle -= 360.0f;
+    }
 }
 
 void Uninitialize(void)
@@ -1183,12 +1235,20 @@ void Uninitialize(void)
         fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyDescriptorSetLayout() successful\n");
     }
 
-    // Pipeline
-    if (vkPipeline)
+    // // Pipeline Triangle
+    if (vkPipeline_triangle)
     {
-        vkDestroyPipeline(vkDevice, vkPipeline, NULL);
-        vkPipeline = VK_NULL_HANDLE;
-        fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyPipeline() successful\n");
+        vkDestroyPipeline(vkDevice, vkPipeline_triangle, NULL);
+        vkPipeline_triangle = VK_NULL_HANDLE;
+        fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyPipeline() successful for Triangle\n");
+    }
+
+    // Pipeline Rectangle
+    if (vkPipeline_rectangle)
+    {
+        vkDestroyPipeline(vkDevice, vkPipeline_rectangle, NULL);
+        vkPipeline_rectangle = VK_NULL_HANDLE;
+        fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyPipeline() successful for Rectangle\n");
     }
 
     // Destroy Shader Fragment
@@ -3287,6 +3347,8 @@ VkResult UpdateUniformBuffer(void)
     VkResult vkResult = VK_SUCCESS;
     void *data = NULL;
     MyUniformData myUniformData;
+    glm::mat4 translateMatrix = glm::mat4(1.0f);
+    glm::mat4 rotationMatrix = glm::mat4(1.0f);
     glm::mat4 modelMatrix = glm::mat4(1.0f);
     glm::mat4 viewMatrix = glm::mat4(1.0f);
     glm::mat4 perspectiveProjectionMatrix = glm::mat4(1.0f);
@@ -3294,7 +3356,9 @@ VkResult UpdateUniformBuffer(void)
     // Initialize Uniform Data
     memset((void *)&myUniformData, 0, sizeof(MyUniformData));
 
-    modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-1.5f, 0.0f, -6.0f));
+    translateMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-1.5f, 0.0f, -4.0f));
+    rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotationAngle), glm::vec3(0.0f, 1.0f, 0.0f));
+    modelMatrix = translateMatrix * rotationMatrix;
 
     myUniformData.modelMatrix = modelMatrix;
     myUniformData.viewMatrix = viewMatrix;
@@ -3327,7 +3391,9 @@ VkResult UpdateUniformBuffer(void)
     // Initialize Uniform Data
     memset((void *)&myUniformData, 0, sizeof(MyUniformData));
 
-    modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 0.0f, -6.0f));
+    translateMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 0.0f, -4.0f));
+    rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotationAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+    modelMatrix = translateMatrix * rotationMatrix;
 
     myUniformData.modelMatrix = modelMatrix;
     myUniformData.viewMatrix = viewMatrix;
@@ -3825,10 +3891,11 @@ VkResult CreateRenderPass(void)
     return (vkResult);
 }
 
-VkResult CreatePipeline(void)
+VkResult CreatePipeline(VkPipeline *pPipeline, VkPrimitiveTopology primitiveTopology)
 {
     // Variable Definition
     VkResult vkResult = VK_SUCCESS;
+    VkPipeline vkPipeline = VK_NULL_HANDLE;
     VkVertexInputBindingDescription vkVertexInputBindingDescription_array[1];
     VkVertexInputAttributeDescription vkVertexInputAttributeDescription_array[1];
     VkPipelineVertexInputStateCreateInfo vkPipelineVertexInputStateCreateInfo;
@@ -3875,7 +3942,7 @@ VkResult CreatePipeline(void)
     vkPipelineInputAssemblyStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
     vkPipelineInputAssemblyStateCreateInfo.pNext = NULL;
     vkPipelineInputAssemblyStateCreateInfo.flags = 0;
-    vkPipelineInputAssemblyStateCreateInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
+    vkPipelineInputAssemblyStateCreateInfo.topology = primitiveTopology;
     //  vkPipelineInputAssemblyStateCreateInfo.primitiveRestartEnable = ;
 
     // Rasterization/Rasterizer State
@@ -3884,7 +3951,7 @@ VkResult CreatePipeline(void)
     vkPipelineRasterizationStateCreateInfo.pNext = NULL;
     vkPipelineRasterizationStateCreateInfo.flags = 0;
     vkPipelineRasterizationStateCreateInfo.polygonMode = VK_POLYGON_MODE_FILL;
-    vkPipelineRasterizationStateCreateInfo.cullMode = VK_CULL_MODE_BACK_BIT;
+    vkPipelineRasterizationStateCreateInfo.cullMode = VK_CULL_MODE_NONE; // VK_CULL_MODE_BACK_BIT;
     vkPipelineRasterizationStateCreateInfo.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
     vkPipelineRasterizationStateCreateInfo.lineWidth = 1.0f;
 
@@ -4028,6 +4095,10 @@ VkResult CreatePipeline(void)
     }
 
     fprintf(gpLogFile, "CreatePipeline()  -->  function completed\n");
+
+    // Return the pipeline
+    *pPipeline = vkPipeline;
+
     return (vkResult);
 }
 
@@ -4230,11 +4301,12 @@ VkResult BuildCommandBuffers(void)
         vkCmdBeginRenderPass(vkCommandBuffer_array[le], &vkRenderPassBeginInfo, VK_SUBPASS_CONTENTS_INLINE);
         {
             // Bind with the pipeline
-            vkCmdBindPipeline(vkCommandBuffer_array[le], VK_PIPELINE_BIND_POINT_GRAPHICS, vkPipeline);
             VkDeviceSize vkDeviceSize_offset_array[1];
 
             // TRIANGLE
             {
+                vkCmdBindPipeline(vkCommandBuffer_array[le], VK_PIPELINE_BIND_POINT_GRAPHICS, vkPipeline_triangle);
+
                 // Bind Descriptor Set to Pipeline
                 vkCmdBindDescriptorSets(vkCommandBuffer_array[le],
                                         VK_PIPELINE_BIND_POINT_GRAPHICS,
@@ -4268,6 +4340,8 @@ VkResult BuildCommandBuffers(void)
 
             // RECTANGLE
             {
+                vkCmdBindPipeline(vkCommandBuffer_array[le], VK_PIPELINE_BIND_POINT_GRAPHICS, vkPipeline_rectangle);
+
                 // Bind Descriptor Set to Pipeline
                 vkCmdBindDescriptorSets(vkCommandBuffer_array[le],
                                         VK_PIPELINE_BIND_POINT_GRAPHICS,

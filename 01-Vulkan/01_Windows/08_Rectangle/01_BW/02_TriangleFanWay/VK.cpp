@@ -31,6 +31,8 @@
 #define WIN_HEIGHT 600
 #define NEWLINEINFILE (fprintf(gpLogFile, "\n"))
 
+#define WINDOW_TITLE "MST: Vulkan - Triangle Fan Way"
+
 // GLOBAL VARIABLES
 HWND ghwnd;
 BOOL bFullscreen = FALSE;
@@ -230,7 +232,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 
     hwnd = CreateWindowEx(WS_EX_APPWINDOW,
                           szAppName,
-                          TEXT("MST: Vulkan"),
+                          TEXT(WINDOW_TITLE),
                           WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_OVERLAPPED | WS_THICKFRAME | WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS,
                           rcDesktop.right / 2 - WIN_WIDTH / 2,
                           rcDesktop.bottom / 2 - WIN_HEIGHT / 2,

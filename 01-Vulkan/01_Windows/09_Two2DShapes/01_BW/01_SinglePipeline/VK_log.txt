@@ -474,8 +474,81 @@ CreateDescriptorPool()  -->  function completed
 Initialize()    =>  CreateDescriptorPool() successful
 CreateDescriptorSet()  >>>  function started
 CreateDescriptorSet()    =>  vkAllocateDescriptorSets() successful for TRIANGLE
-CreateDescriptorSet()    =>  vkAllocateDescriptorSets() failed (-1000069000) for RECTANGLE
-Initialize()    =>  CreateDescriptorSet() failed -1000069000
-WinMain()   =>  Initialize() failed
+CreateDescriptorSet()    =>  vkAllocateDescriptorSets() successful for RECTANGLE
+CreateDescriptorSet()  -->  function completed
+Initialize()    =>  CreateDescriptorSet() successful
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+Initialize()    =>  CreateRenderPass() successful
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+Initialize()    =>  CreatePipeline() successful
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()  -->  function completed
+Initialize()    =>  CreateFrameBuffers() successful
+CreateSemaphores()  >>>  function started
+CreateSemaphores()    =>  vkCreateSemaphore() successful for vkSemaphore_backbuffer 
+CreateSemaphores()    =>  vkCreateSemaphore() successful for vkSemaphore_rendercomplete 
+CreateSemaphores()  -->  function completed
+Initialize()    =>  CreateSemaphores() successful
+CreateFences()  >>>  function started
+CreateFences()    =>  vkCreateFence() successful for iteration 0 
+CreateFences()    =>  vkCreateFence() successful for iteration 1 
+CreateFences()  -->  function completed
+Initialize()    =>  CreateFences() successful
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()  -->  function completed
+Initialize()    =>  BuildCommandBuffers() successful
+Initialize()    -->  function completed
+WinMain()   =>  Initialize() successful
 Uninitialize()  >>>  function started
 Uninitialize()  =>  vkDeviceWaitIdle() is done
+Uninitialize()  =>  vkDestroyFence() successful for 0
+Uninitialize()  =>  vkDestroyFence() successful for 1
+Uninitialize()  =>  vkFence_array freed successfully
+Uninitialize()  =>  vkDestroySemaphore() successful for vkSemaphore_rendercomplete
+Uninitialize()  =>  vkDestroySemaphore() successful for vkSemaphore_backbuffer
+Uninitialize()  =>  vkDestroyFramebuffer() successful for 0
+Uninitialize()  =>  vkDestroyFramebuffer() successful for 1
+Uninitialize()  =>  vkFramebuffer_array freed successfully
+Uninitialize()  =>  vkDestroyRenderPass() successful
+Uninitialize()  =>  vkDestroyDescriptorPool() successful for vkDescriptorPool and vkDescriptorSet_triangle
+Uninitialize()  =>  vkDestroyPipelineLayout() successful
+Uninitialize()  =>  vkDestroyDescriptorSetLayout() successful
+Uninitialize()  =>  vkDestroyPipeline() successful
+Uninitialize()  =>  vkDestroyShaderModule() successful for vkShaderModule_fragment_shader
+Uninitialize()  =>  vkDestroyShaderModule() successful for vkShaderModule_vertex_shader
+Uninitialize()  =>  vkFreeMemory() successful for uniformData_triangle.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for uniformData_triangle.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for uniformData_rectangle.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for uniformData_rectangle.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for vertexData_position_triangle.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_position_triangle.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for vertexData_position_rectangle.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_position_rectangle.vkBuffer
+Uninitialize()  =>  vkFreeCommandBuffers() successful for 0
+Uninitialize()  =>  vkFreeCommandBuffers() successful for 1
+Uninitialize()  =>  vkCommandBuffer_array freed successfully
+Uninitialize()  =>  vkDestroyCommandPool() successful
+Uninitialize()  =>  vkDestroyImageView() successful for 0
+Uninitialize()  =>  vkDestroyImageView() successful for 1
+Uninitialize()  =>  swapchainImageView_array freed successfully
+Uninitialize()  =>  swapchainImage_array freed successfully
+Uninitialize()  =>  vkDestroySwapchainKHR() successful
+Uninitialize()  =>  vkDestroy() successful 
+Uninitialize()  =>  vkDestroySurfaceKHR() successful
+Uninitialize()  =>  vkDestroyDebugReportCallbackEXT_fnptr() successful
+Uninitialize()  =>  vkDestroyInstance() successful
+Uninitialize()  -->  program terminated successfully
