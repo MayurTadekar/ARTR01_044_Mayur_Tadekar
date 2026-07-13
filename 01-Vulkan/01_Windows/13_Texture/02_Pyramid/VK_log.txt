@@ -504,8 +504,6 @@ CreateRenderPass()  -->  function completed
 Initialize()    =>  CreateRenderPass() successful
 CreatePipeline()  >>>  function started
 CreatePipeline()    =>  vkCreatePipelineCache() successful 
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-VkGraphicsPipelineCreateInfo-layout-07988 ] Object 0: handle = 0xcb1c7c000000001b, type = VK_OBJECT_TYPE_SHADER_MODULE; Object 1: handle = 0x908683000000001d, type = VK_OBJECT_TYPE_PIPELINE_LAYOUT; | MessageID = 0x215f02cd | vkCreateGraphicsPipelines(): pCreateInfos[0].pStages[1] SPIR-V (VK_SHADER_STAGE_FRAGMENT_BIT) uses descriptor [Set 0, Binding 1, variable "uTextureSampler"] (type VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER) but was not declared in the pipeline layout.
-The Vulkan spec states: If a resource variable is declared in a shader, the corresponding descriptor set in layout must match the shader stage (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-VkGraphicsPipelineCreateInfo-layout-07988)
 CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
 CreatePipeline()  -->  vkDestroyPipelineCache() successful
 CreatePipeline()  -->  function completed
@@ -528,13 +526,9 @@ Initialize()    =>  CreateFences() successful
 BuildCommandBuffers()  >>>  function started
 BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
 BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkCmdDraw-None-08114 ] Object 0: handle = 0x2e2941000000001f, type = VK_OBJECT_TYPE_DESCRIPTOR_SET; | MessageID = 0x2ba3a98e | vkCmdDraw(): VkDescriptorSet 0x2e2941000000001f[] [Set 0, Binding 1, variable "uTextureSampler"] is invalid.
-The Vulkan spec states: Descriptors in each bound descriptor set, specified via vkCmdBindDescriptorSets, must be valid as described by descriptor validity if they are statically used by the VkPipeline bound to the pipeline bind point used by this command and the bound VkPipeline was not created with VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkCmdDraw-None-08114)
 BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
 BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
 BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkCmdDraw-None-08114 ] Object 0: handle = 0x2e2941000000001f, type = VK_OBJECT_TYPE_DESCRIPTOR_SET; | MessageID = 0x2ba3a98e | vkCmdDraw(): VkDescriptorSet 0x2e2941000000001f[] [Set 0, Binding 1, variable "uTextureSampler"] is invalid.
-The Vulkan spec states: Descriptors in each bound descriptor set, specified via vkCmdBindDescriptorSets, must be valid as described by descriptor validity if they are statically used by the VkPipeline bound to the pipeline bind point used by this command and the bound VkPipeline was not created with VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkCmdDraw-None-08114)
 BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
 BuildCommandBuffers()  -->  function completed
 Initialize()    =>  BuildCommandBuffers() successful
@@ -620,8 +614,6 @@ CreateRenderPass()    =>  vkCreateRenderPass() successful
 CreateRenderPass()  -->  function completed
 CreatePipeline()  >>>  function started
 CreatePipeline()    =>  vkCreatePipelineCache() successful 
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-VkGraphicsPipelineCreateInfo-layout-07988 ] Object 0: handle = 0xcb1c7c000000001b, type = VK_OBJECT_TYPE_SHADER_MODULE; Object 1: handle = 0x4fac1c0000000032, type = VK_OBJECT_TYPE_PIPELINE_LAYOUT; | MessageID = 0x215f02cd | vkCreateGraphicsPipelines(): pCreateInfos[0].pStages[1] SPIR-V (VK_SHADER_STAGE_FRAGMENT_BIT) uses descriptor [Set 0, Binding 1, variable "uTextureSampler"] (type VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER) but was not declared in the pipeline layout.
-The Vulkan spec states: If a resource variable is declared in a shader, the corresponding descriptor set in layout must match the shader stage (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-VkGraphicsPipelineCreateInfo-layout-07988)
 CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
 CreatePipeline()  -->  vkDestroyPipelineCache() successful
 CreatePipeline()  -->  function completed
@@ -632,13 +624,9 @@ CreateFrameBuffers()  -->  function completed
 BuildCommandBuffers()  >>>  function started
 BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
 BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkCmdDraw-None-08114 ] Object 0: handle = 0x2e2941000000001f, type = VK_OBJECT_TYPE_DESCRIPTOR_SET; | MessageID = 0x2ba3a98e | vkCmdDraw(): VkDescriptorSet 0x2e2941000000001f[] [Set 0, Binding 1, variable "uTextureSampler"] is invalid.
-The Vulkan spec states: Descriptors in each bound descriptor set, specified via vkCmdBindDescriptorSets, must be valid as described by descriptor validity if they are statically used by the VkPipeline bound to the pipeline bind point used by this command and the bound VkPipeline was not created with VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkCmdDraw-None-08114)
 BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
 BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
 BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkCmdDraw-None-08114 ] Object 0: handle = 0x2e2941000000001f, type = VK_OBJECT_TYPE_DESCRIPTOR_SET; | MessageID = 0x2ba3a98e | vkCmdDraw(): VkDescriptorSet 0x2e2941000000001f[] [Set 0, Binding 1, variable "uTextureSampler"] is invalid.
-The Vulkan spec states: Descriptors in each bound descriptor set, specified via vkCmdBindDescriptorSets, must be valid as described by descriptor validity if they are statically used by the VkPipeline bound to the pipeline bind point used by this command and the bound VkPipeline was not created with VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkCmdDraw-None-08114)
 BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
 BuildCommandBuffers()  -->  function completed
 Resize()    -->  function completed
@@ -722,8 +710,6 @@ CreateRenderPass()    =>  vkCreateRenderPass() successful
 CreateRenderPass()  -->  function completed
 CreatePipeline()  >>>  function started
 CreatePipeline()    =>  vkCreatePipelineCache() successful 
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-VkGraphicsPipelineCreateInfo-layout-07988 ] Object 0: handle = 0xcb1c7c000000001b, type = VK_OBJECT_TYPE_SHADER_MODULE; Object 1: handle = 0x56c9bd0000000040, type = VK_OBJECT_TYPE_PIPELINE_LAYOUT; | MessageID = 0x215f02cd | vkCreateGraphicsPipelines(): pCreateInfos[0].pStages[1] SPIR-V (VK_SHADER_STAGE_FRAGMENT_BIT) uses descriptor [Set 0, Binding 1, variable "uTextureSampler"] (type VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER) but was not declared in the pipeline layout.
-The Vulkan spec states: If a resource variable is declared in a shader, the corresponding descriptor set in layout must match the shader stage (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-VkGraphicsPipelineCreateInfo-layout-07988)
 CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
 CreatePipeline()  -->  vkDestroyPipelineCache() successful
 CreatePipeline()  -->  function completed
@@ -734,13 +720,9 @@ CreateFrameBuffers()  -->  function completed
 BuildCommandBuffers()  >>>  function started
 BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
 BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkCmdDraw-None-08114 ] Object 0: handle = 0x2e2941000000001f, type = VK_OBJECT_TYPE_DESCRIPTOR_SET; | MessageID = 0x2ba3a98e | vkCmdDraw(): VkDescriptorSet 0x2e2941000000001f[] [Set 0, Binding 1, variable "uTextureSampler"] is invalid.
-The Vulkan spec states: Descriptors in each bound descriptor set, specified via vkCmdBindDescriptorSets, must be valid as described by descriptor validity if they are statically used by the VkPipeline bound to the pipeline bind point used by this command and the bound VkPipeline was not created with VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkCmdDraw-None-08114)
 BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
 BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
 BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkCmdDraw-None-08114 ] Object 0: handle = 0x2e2941000000001f, type = VK_OBJECT_TYPE_DESCRIPTOR_SET; | MessageID = 0x2ba3a98e | vkCmdDraw(): VkDescriptorSet 0x2e2941000000001f[] [Set 0, Binding 1, variable "uTextureSampler"] is invalid.
-The Vulkan spec states: Descriptors in each bound descriptor set, specified via vkCmdBindDescriptorSets, must be valid as described by descriptor validity if they are statically used by the VkPipeline bound to the pipeline bind point used by this command and the bound VkPipeline was not created with VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkCmdDraw-None-08114)
 BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
 BuildCommandBuffers()  -->  function completed
 Resize()    -->  function completed
@@ -765,6 +747,10 @@ Uninitialize()  =>  vkDestroyBuffer() successful for uniformData_pyramid.vkBuffe
 Uninitialize()  =>  vkFreeMemory() successful for uniformData_pyramid.vkDeviceMemory
 Uninitialize()  =>  vkDestroyBuffer() successful for uniformData_cube.vkBuffer
 Uninitialize()  =>  vkFreeMemory() successful for uniformData_cube.vkDeviceMemory
+Uninitialize()  =>  vkDestroySampler() successful for vkSampler_texture
+Uninitialize()  =>  vkDestroyImageView() successful for vkImageView_texture
+Uninitialize()  =>  vkDestroyImage() successful for vkImage_texture
+Uninitialize()  =>  vkFreeMemory() successful for vkDeviceMemory_texture
 Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_position_pyramid.vkBuffer
 Uninitialize()  =>  vkFreeMemory() successful for vertexData_position_pyramid.vkDeviceMemory
 Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_texcoords_pyramid.vkBuffer
@@ -781,14 +767,6 @@ Uninitialize()  =>  vkDestroyImageView() successful for 1
 Uninitialize()  =>  swapchainImageView_array freed successfully
 Uninitialize()  =>  swapchainImage_array freed successfully
 Uninitialize()  =>  vkDestroySwapchainKHR() successful
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkDestroyDevice-device-05137 ] Object 0: handle = 0xdcc8fd0000000012, type = VK_OBJECT_TYPE_IMAGE; | MessageID = 0x4872eaa0 | vkDestroyDevice(): OBJ ERROR : For VkDevice 0x1fe60cf2e80[], VkImage 0xdcc8fd0000000012[] has not been destroyed.
-The Vulkan spec states: All child objects created on device must have been destroyed prior to destroying device (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkDestroyDevice-device-05137)
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkDestroyDevice-device-05137 ] Object 0: handle = 0xd175b40000000013, type = VK_OBJECT_TYPE_DEVICE_MEMORY; | MessageID = 0x4872eaa0 | vkDestroyDevice(): OBJ ERROR : For VkDevice 0x1fe60cf2e80[], VkDeviceMemory 0xd175b40000000013[] has not been destroyed.
-The Vulkan spec states: All child objects created on device must have been destroyed prior to destroying device (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkDestroyDevice-device-05137)
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkDestroyDevice-device-05137 ] Object 0: handle = 0x9fde6b0000000014, type = VK_OBJECT_TYPE_IMAGE_VIEW; | MessageID = 0x4872eaa0 | vkDestroyDevice(): OBJ ERROR : For VkDevice 0x1fe60cf2e80[], VkImageView 0x9fde6b0000000014[] has not been destroyed.
-The Vulkan spec states: All child objects created on device must have been destroyed prior to destroying device (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkDestroyDevice-device-05137)
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkDestroyDevice-device-05137 ] Object 0: handle = 0xdd3a8a0000000015, type = VK_OBJECT_TYPE_SAMPLER; | MessageID = 0x4872eaa0 | vkDestroyDevice(): OBJ ERROR : For VkDevice 0x1fe60cf2e80[], VkSampler 0xdd3a8a0000000015[] has not been destroyed.
-The Vulkan spec states: All child objects created on device must have been destroyed prior to destroying device (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkDestroyDevice-device-05137)
 Uninitialize()  =>  vkDestroy() successful 
 Uninitialize()  =>  vkDestroySurfaceKHR() successful
 Uninitialize()  =>  vkDestroyDebugReportCallbackEXT_fnptr() successful
