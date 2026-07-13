@@ -853,6 +853,7 @@ VkResult Resize(int width, int height)
         fprintf(gpLogFile, "Resize()  =>  vkCommandBuffer_array freed successfully\n");
     }
 
+    // For Depth
     if (vkImageView_depth)
     {
         vkDestroyImageView(vkDevice, vkImageView_depth, NULL);
@@ -1300,6 +1301,7 @@ void Uninitialize(void)
         fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyCommandPool() successful\n");
     }
 
+    // For Depth
     if (vkImageView_depth)
     {
         vkDestroyImageView(vkDevice, vkImageView_depth, NULL);

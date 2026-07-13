@@ -536,6 +536,8 @@ Uninitialize()  =>  vkFreeMemory() successful for uniformData_rectangle.vkDevice
 Uninitialize()  =>  vkDestroyBuffer() successful for uniformData_rectangle.vkBuffer
 Uninitialize()  =>  vkFreeMemory() successful for vertexData_position_triangle.vkDeviceMemory
 Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_position_triangle.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for vertexData_color_triangle.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_color_triangle.vkBuffer
 Uninitialize()  =>  vkFreeCommandBuffers() successful for 0
 Uninitialize()  =>  vkFreeCommandBuffers() successful for 1
 Uninitialize()  =>  vkCommandBuffer_array freed successfully
@@ -545,10 +547,6 @@ Uninitialize()  =>  vkDestroyImageView() successful for 1
 Uninitialize()  =>  swapchainImageView_array freed successfully
 Uninitialize()  =>  swapchainImage_array freed successfully
 Uninitialize()  =>  vkDestroySwapchainKHR() successful
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkDestroyDevice-device-05137 ] Object 0: handle = 0xec4bec000000000b, type = VK_OBJECT_TYPE_BUFFER; | MessageID = 0x4872eaa0 | vkDestroyDevice(): OBJ ERROR : For VkDevice 0x18b94076260[], VkBuffer 0xec4bec000000000b[] has not been destroyed.
-The Vulkan spec states: All child objects created on device must have been destroyed prior to destroying device (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkDestroyDevice-device-05137)
-MST_VALIDATION : DebugReportCallback()  ||>     Validation 0 = Validation Error: [ VUID-vkDestroyDevice-device-05137 ] Object 0: handle = 0xe88693000000000c, type = VK_OBJECT_TYPE_DEVICE_MEMORY; | MessageID = 0x4872eaa0 | vkDestroyDevice(): OBJ ERROR : For VkDevice 0x18b94076260[], VkDeviceMemory 0xe88693000000000c[] has not been destroyed.
-The Vulkan spec states: All child objects created on device must have been destroyed prior to destroying device (https://vulkan.lunarg.com/doc/view/1.4.304.0/windows/1.4-extensions/vkspec.html#VUID-vkDestroyDevice-device-05137)
 Uninitialize()  =>  vkDestroy() successful 
 Uninitialize()  =>  vkDestroySurfaceKHR() successful
 Uninitialize()  =>  vkDestroyDebugReportCallbackEXT_fnptr() successful

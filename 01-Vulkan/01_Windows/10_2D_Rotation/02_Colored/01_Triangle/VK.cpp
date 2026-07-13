@@ -1268,19 +1268,19 @@ void Uninitialize(void)
     }
 
     // Color Vertex Buffer for Triangle
-    // if (vertexData_color_triangle.vkDeviceMemory)
-    // {
-    //     vkFreeMemory(vkDevice, vertexData_color_triangle.vkDeviceMemory, NULL);
-    //     vertexData_color_triangle.vkDeviceMemory = VK_NULL_HANDLE;
-    //     fprintf(gpLogFile, "Uninitialize()  =>  vkFreeMemory() successful for vertexData_color_triangle.vkDeviceMemory\n");
-    // }
+    if (vertexData_color_triangle.vkDeviceMemory)
+    {
+        vkFreeMemory(vkDevice, vertexData_color_triangle.vkDeviceMemory, NULL);
+        vertexData_color_triangle.vkDeviceMemory = VK_NULL_HANDLE;
+        fprintf(gpLogFile, "Uninitialize()  =>  vkFreeMemory() successful for vertexData_color_triangle.vkDeviceMemory\n");
+    }
 
-    // if (vertexData_color_triangle.vkBuffer)
-    // {
-    //     vkDestroyBuffer(vkDevice, vertexData_color_triangle.vkBuffer, NULL);
-    //     vertexData_color_triangle.vkBuffer = VK_NULL_HANDLE;
-    //     fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_color_triangle.vkBuffer\n");
-    // }
+    if (vertexData_color_triangle.vkBuffer)
+    {
+        vkDestroyBuffer(vkDevice, vertexData_color_triangle.vkBuffer, NULL);
+        vertexData_color_triangle.vkBuffer = VK_NULL_HANDLE;
+        fprintf(gpLogFile, "Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_color_triangle.vkBuffer\n");
+    }
 
     // Position Vertex Buffer for Rectangle
     if (vertexData_position_rectangle.vkDeviceMemory)
