@@ -1,7 +1,7 @@
 /**************************************************
  * S.G.M.P
  * @file: VK.c
- * @brief: Implementation of First Window Boiler Plate Code for ARTR
+ * @brief: STEP 01: Implementation of First Window Boiler Plate Code for ARTR
  * @author: Mayur S. Tadekar(mrtadekar@gmail.com)
  * @Copyright ©2020-2023 MarshallingVoid
  * @date: 04 June 2025 (Wednesday) 09:06:39 PM
