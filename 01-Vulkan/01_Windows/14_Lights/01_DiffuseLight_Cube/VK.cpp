@@ -4105,9 +4105,9 @@ VkResult UpdateUniformBuffer(void)
     myUniformData.lightPosition[2] = 2.0f;
     myUniformData.lightPosition[3] = 1.0f;
 
-    myUniformData.materialDiffuse[0] = 0.5f;
-    myUniformData.materialDiffuse[1] = 0.5f;
-    myUniformData.materialDiffuse[2] = 0.5f;
+    myUniformData.materialDiffuse[0] = 0.75f;
+    myUniformData.materialDiffuse[1] = 0.75f;
+    myUniformData.materialDiffuse[2] = 0.75f;
     myUniformData.materialDiffuse[3] = 1.0f;
 
     // Update Key Pressed Related Uniform
