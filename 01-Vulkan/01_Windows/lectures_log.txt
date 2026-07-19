@@ -30,3 +30,37 @@ File Path                                                     Created Time
 03_Triangle\28_04_Staging_Buffer\28_Staging_Buffer\VK.c       14 June 2025 (Saturday) 12:53:27 AM
 03_Triangle\29_05_Shader_as_String\VK.cpp                     15 June 2025 (Sunday) 07:14:45 AM
 03_Triangle\30_Resize\VK.c                                    16 June 2025 (Monday) 06:55:14 AM
+
+
+Steps 
+
+02_Instance_Extensions                     
+03_Instance                                
+04_Presentation_Surface                    
+05_Physical_Device                         
+06_Print_VK_Info                          
+07_Device_Extensions                      
+08_Vulkan_Device                           
+09_Device_Queue                       
+10_SurfaceFormat_and_SurfaceColorSpace
+11_Presentation_Mode                  
+12_Swapchain                          
+13_Swapchain_Images_and_ImageViews    
+14_CommandPool                        
+15_Command_Buffer                     
+16_RenderPass                         
+17_FrameBuffer                        
+18_Fences_And_Semaphores              
+19_Build_Command_Buffers              
+20_Render                             
+21_Validation                         
+22_Vertex_Buffer                        
+23_Shaders                              
+24_DescriptorSetLayout                  
+25_PipelineLayout                       
+26_Pipeline                             
+27_Final_Render                         
+28_04_Staging_Buffer  
+29_05_Shader_as_String                
+30_Resize                               
+
