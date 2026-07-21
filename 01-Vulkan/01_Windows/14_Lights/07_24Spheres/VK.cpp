@@ -1,7 +1,7 @@
 /***************************************************************************
  * S.G.M.P
  * @file: VK.cpp
- * @brief: Vulkan Sphere White Per Fragment Lighting
+ * @brief: Vulkan 24 Sphere
  * @author: Mayur S. Tadekar(mrtadekar@gmail.com)
  * @copyright ©2020-2025 MarshallingVoid
  * @date: Sunday 2026-07-19 12:04:33 PM
@@ -39,7 +39,7 @@
 #define fprintf(stream, ...) logf((stream), __VA_ARGS__)
 #define NEWLINEINFILE (fprintf(gpLogFile, "\n"))
 
-#define WINDOW_TITLE "MST: Vulkan - Sphere White Per Fragment Lighting"
+#define WINDOW_TITLE "MST: Vulkan - 24 Sphere"
 
 static int logf(FILE *stream, const char *format, ...)
 {
