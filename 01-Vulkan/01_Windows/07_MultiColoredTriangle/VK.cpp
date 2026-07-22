@@ -1,7 +1,7 @@
 /**************************************************
  * S.G.M.P
  * @file: VK.c
- * @brief: Step 32 B b
+ * @brief: Coloured Triangle
  * @author: Mayur S. Tadekar(mrtadekar@gmail.com)
  * @Copyright ©2020-2025 MarshallingVoid
  * @date: 02 July 2025 (Wednesday) 10:36:41 PM
