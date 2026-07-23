@@ -3,10 +3,10 @@
  * @file: VK.cpp
  * @brief: Vulkan Cube with Interleaved Arrays
  * @author: Mayur S. Tadekar(mrtadekar@gmail.com)
- * @date: Tuesday 2026-07-14 2:43:41 PM
+ * @date: Thursday 2026-07-23 1:26:56 PM
  ***************************************************************************/
 
-// HEADERS
+ // HEADERS
 #include <Windows.h>
 #include <stdarg.h>
 #include <stdio.h>
