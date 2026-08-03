@@ -95,8 +95,6 @@ int main(int argc, char* argv[])
     else
     {
         fprintf(gpLogFile, "main() -> Log file created successfully.\n");
-        fflush(gpLogFile);
-        fclose(gpLogFile);
     }
 
     // Open Display
