@@ -1,0 +1,1357 @@
+main() -> Log file created successfully.
+main() -> XOpenDisplay() succeeded. Display: :1
+main() -> XGetVisualInfo() succeeded. Visual ID: 0x21
+main() -> Found no of matching FBConfigs: 132
+main() -> XCreateWindow() succeeded. Window ID: 0x3c00002
+CreateVulkanInstance()    ||> VALIDATION 
+Initialize()    >>>  function started
+CreateVulkanInstance()    >>>  function started
+FillInstanceExtensionNames()  >>>  function started
+FillInstanceExtensionNames()   =>  vkEnumerateInstanceExtensionProperties() successful - first call
+FillInstanceExtensionNames()   =>  vkEnumerateInstanceExtensionProperties() successful - second call
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_device_group_creation
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_external_fence_capabilities
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_external_memory_capabilities
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_external_semaphore_capabilities
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_physical_device_properties2
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_surface_capabilities2
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface_protected_capabilities
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_wayland_surface
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_xcb_surface
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_xlib_surface
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_debug_report
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_debug_utils
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_headless_surface
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_surface_maintenance1
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_swapchain_colorspace
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_display
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_get_display_properties2
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_acquire_drm_display
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_acquire_xlib_display
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_direct_mode_display
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_EXT_display_surface_counter
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_surface_maintenance1
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_NV_display_stereo
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_KHR_portability_enumeration
+FillInstanceExtensionNames()    =>  vulkan instance extension name = VK_LUNARG_direct_driver_loading
+FillInstanceExtensionNames()    =>  VK_KHR_SURFACE_EXTENSION_NAME found successfully
+FillInstanceExtensionNames()    =>  VK_KHR_XLIB_SURFACE_EXTENSION_NAME found successfully
+FillInstanceExtensionNames()    ||>  validation is on and VK_EXT_DEBUG_REPORT_EXTENSION_NAME found successfully
+FillInstanceExtensionNames()    =>  Enabled vulkan instance extension name = VK_KHR_surface
+FillInstanceExtensionNames()    =>  Enabled vulkan instance extension name = VK_KHR_xlib_surface
+FillInstanceExtensionNames()    =>  Enabled vulkan instance extension name = VK_EXT_debug_report
+FillInstanceExtensionNames()    -->  function completed
+CreateVulkanInstance()   =>  FillInstanceExtensionNames() successful
+FillValidationLayerNames()    >>>  function started
+FillValidationLayerNames()   =>  vkEnumerateInstanceLayerProperties() successful - first call
+FillValidationLayerNames()   =>  vkEnumerateInstanceLayerProperties() successful - second call
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_MESA_device_select
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_NV_optimus
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_NV_present
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_KHRONOS_profiles
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_KHRONOS_synchronization2
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_monitor
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_screenshot
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_api_dump
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_KHRONOS_validation
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_crash_diagnostic
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_KHRONOS_shader_object
+FillValidationLayerNames()    =>  vulkan instance layer name = VK_LAYER_LUNARG_gfxreconstruct
+FillValidationLayerNames()    =>  VK_LAYER_KHRONOS_validation found successfully
+FillValidationLayerNames()    ||>  Enabled vulkan instance layer name = VK_LAYER_KHRONOS_validation
+FillValidationLayerNames()    -->  function completed
+CreateVulkanInstance()   =>  FillValidationLayerNames() successful
+CreateVulkanInstance()   =>  vkCreateInstance() successful
+CreateValidationCallbackFunction()    >>>  function started
+CreateValidationCallbackFunction()    ==>  vkGetInstanceProcAddr() successful to get function pointer for vkCreateDebugReportCallbackEXT
+CreateValidationCallbackFunction()    ==>  vkGetInstanceProcAddr() successful to get function pointer for vkDestroyDebugReportCallbackEXT
+CreateValidationCallbackFunction()   =>  vkCreateDebugReportCallbackEXT_fnptr() successful
+CreateValidationCallbackFunction()    -->  function completed
+CreateVulkanInstance()   =>  CreateValidationCallbackFunction() successful
+CreateVulkanInstance()    -->  function completed
+Initialize()   =>  CreateVulkanInstance() successful
+GetSupportedSurface()    >>>  function started
+GetSupportedSurface()   =>  vkCreateXlibSurfaceKHR() successful
+GetSupportedSurface()    -->  function completed
+Initialize()   =>  GetSupportedSurface() successful
+GetPhysicalDevice() >>>  function started
+GetPhysicalDevice()   =>  vkEnumeratePhysicalDevices() successful - first call
+GetPhysicalDevice()   =>  vkEnumeratePhysicalDevices() successful - second call
+GetPhysicalDevice() =>  isQueueSurfaceSupported_array successfully freed
+GetPhysicalDevice() =>  vkQueueFamilyProperties_array successful freed
+GetPhysicalDevice() =>  successful in getting Physical Device with graphics enabled
+GetPhysicalDevice() =>  selected physical device support Tessellation Shader
+GetPhysicalDevice() =>  selected physical device support Geometry Shader
+GetPhysicalDevice()    -->  function completed
+Initialize()    =>  GetPhysicalDevice() successful
+PrintVkInfo()    >>>  function started
+
+**************************************************************************
+                     Vulkan Info
+**************************************************************************
+
+API Version = 1.4.329
+Device Name = NVIDIA GeForce RTX 4060
+Device Type = Discrete GPU(dGPU)
+Vendor ID = 0x10DE
+Device ID = 0x2882
+API Version = 1.4.318
+Device Name = llvmpipe (LLVM 20.1.2, 256 bits)
+Device Type = CPU
+Vendor ID = 0x10005
+Device ID = 0x0000
+
+**************************************************************************
+
+PrintVkInfo() =>  vkPhysicalDevice_array successfully freed
+PrintVkInfo()    -->  function completed
+Initialize()    =>  PrintVkInfo() successful
+CreateVulkanDevice()  >>>  function started
+FillDeviceExtensionNames()  >>>  function started
+FillDeviceExtensionNames()   =>  vkEnumerateDeviceExtensionProperties() successful - first call
+FillDeviceExtensionNames()   =>  vkEnumerateDeviceExtensionProperties() successful - second call
+FillDeviceExtensionNames()   =>  number of found device extension count = 275
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_16bit_storage
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_8bit_storage
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_acceleration_structure
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_bind_memory2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_buffer_device_address
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_calibrated_timestamps
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_compute_shader_derivatives
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_cooperative_matrix
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_copy_commands2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_copy_memory_indirect
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_create_renderpass2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_dedicated_allocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_deferred_host_operations
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_depth_clamp_zero_one
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_depth_stencil_resolve
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_descriptor_update_template
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_device_group
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_draw_indirect_count
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_driver_properties
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_dynamic_rendering
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_dynamic_rendering_local_read
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_external_fence
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_external_fence_fd
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_external_memory
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_external_memory_fd
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_external_semaphore
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_external_semaphore_fd
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_format_feature_flags2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_fragment_shader_barycentric
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_fragment_shading_rate
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_get_memory_requirements2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_global_priority
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_image_format_list
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_imageless_framebuffer
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_incremental_present
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_index_type_uint8
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_line_rasterization
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_load_store_op_none
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance1
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance10
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance3
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance4
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance5
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance6
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance7
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance8
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_maintenance9
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_map_memory2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_multiview
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_binary
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_executable_properties
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_pipeline_library
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_id
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_id2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_mode_fifo_latest_ready
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_wait
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_present_wait2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_push_descriptor
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_query
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_maintenance1
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_pipeline
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_ray_tracing_position_fetch
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_relaxed_block_layout
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_robustness2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_sampler_mirror_clamp_to_edge
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_sampler_ycbcr_conversion
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_separate_depth_stencil_layouts
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_atomic_int64
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_bfloat16
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_clock
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_draw_parameters
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_expect_assume
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_float16_int8
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_float_controls
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_float_controls2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_fma
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_integer_dot_product
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_maximal_reconvergence
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_non_semantic_info
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_quad_control
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_relaxed_extended_instruction
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_subgroup_extended_types
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_subgroup_rotate
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_subgroup_uniform_control_flow
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_terminate_invocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shader_untyped_pointers
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_shared_presentable_image
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_spirv_1_4
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_storage_buffer_storage_class
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain_maintenance1
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_swapchain_mutable_format
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_synchronization2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_timeline_semaphore
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_unified_image_layouts
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_uniform_buffer_standard_layout
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_variable_pointers
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_vertex_attribute_divisor
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_av1
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_h264
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_h265
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_queue
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_decode_vp9
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_av1
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_h264
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_h265
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_intra_refresh
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_quantization_map
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_encode_queue
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_maintenance1
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_maintenance2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_video_queue
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_vulkan_memory_model
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_workgroup_memory_explicit_layout
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_KHR_zero_initialize_workgroup_memory
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_4444_formats
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_attachment_feedback_loop_dynamic_state
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_attachment_feedback_loop_layout
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_blend_operation_advanced
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_border_color_swizzle
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_buffer_device_address
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_calibrated_timestamps
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_color_write_enable
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_conditional_rendering
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_conservative_rasterization
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_custom_border_color
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_custom_resolve
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_depth_bias_control
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_depth_clamp_control
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_depth_clamp_zero_one
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_depth_clip_control
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_depth_clip_enable
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_depth_range_unrestricted
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_descriptor_buffer
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_descriptor_heap
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_descriptor_indexing
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_device_address_binding_report
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_device_fault
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_device_generated_commands
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_discard_rectangles
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_display_control
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_dynamic_rendering_unused_attachments
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_extended_dynamic_state
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_extended_dynamic_state2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_extended_dynamic_state3
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_external_memory_dma_buf
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_external_memory_host
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_fragment_shader_interlock
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_global_priority
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_global_priority_query
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_graphics_pipeline_library
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_hdr_metadata
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_host_image_copy
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_host_query_reset
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_image_2d_view_of_3d
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_image_drm_format_modifier
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_image_robustness
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_image_sliced_view_of_3d
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_image_view_min_lod
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_index_type_uint8
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_inline_uniform_block
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_legacy_vertex_attributes
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_line_rasterization
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_load_store_op_none
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_map_memory_placed
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_memory_budget
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_memory_decompression
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_memory_priority
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_mesh_shader
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_multi_draw
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_mutable_descriptor_type
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_nested_command_buffer
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_non_seamless_cube_map
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_opacity_micromap
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_pageable_device_local_memory
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_pci_bus_info
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_physical_device_drm
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_pipeline_creation_cache_control
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_pipeline_creation_feedback
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_pipeline_library_group_handles
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_pipeline_robustness
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_post_depth_coverage
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_present_mode_fifo_latest_ready
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_present_timing
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_primitive_topology_list_restart
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_primitives_generated_query
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_private_data
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_provoking_vertex
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_queue_family_foreign
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_ray_tracing_invocation_reorder
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_robustness2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_sample_locations
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_sampler_filter_minmax
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_scalar_block_layout
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_separate_stencil_usage
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_64bit_indexing
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_atomic_float
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_demote_to_helper_invocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_float8
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_image_atomic_int64
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_module_identifier
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_object
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_replicated_composites
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_subgroup_ballot
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_subgroup_vote
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_uniform_buffer_unsized_array
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_shader_viewport_index_layer
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_subgroup_size_control
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_swapchain_maintenance1
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_texel_buffer_alignment
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_tooling_info
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_transform_feedback
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_vertex_attribute_divisor
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_vertex_attribute_robustness
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_vertex_input_dynamic_state
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_ycbcr_2plane_444_formats
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_ycbcr_image_arrays
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_EXT_zero_initialize_device_memory
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_clip_space_w_scaling
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_cluster_acceleration_structure
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_compute_occupancy_priority
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_compute_shader_derivatives
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_cooperative_matrix
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_cooperative_matrix2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_cooperative_vector
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_copy_memory_indirect
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_corner_sampled_image
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_coverage_reduction_mode
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_cuda_kernel_launch
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_dedicated_allocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_dedicated_allocation_image_aliasing
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_descriptor_pool_overallocation
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_device_diagnostic_checkpoints
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_device_diagnostics_config
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_device_generated_commands
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_device_generated_commands_compute
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_disk_cache_utils
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_extended_sparse_address_space
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_fill_rectangle
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_fragment_coverage_to_color
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_fragment_shader_barycentric
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_fragment_shading_rate_enums
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_framebuffer_mixed_samples
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_geometry_shader_passthrough
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_inherited_viewport_scissor
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_internal_nvpresent
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_linear_color_attachment
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_low_latency
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_low_latency2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_memory_decompression
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_mesh_shader
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_optical_flow
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_partitioned_acceleration_structure
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_present_metering
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_raw_access_chains
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_ray_tracing
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_ray_tracing_invocation_reorder
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_ray_tracing_motion_blur
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_representative_fragment_test
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_sample_mask_override_coverage
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_scissor_exclusive
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_shader_atomic_float16_vector
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_shader_image_footprint
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_shader_sm_builtins
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_shader_subgroup_partitioned
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_shading_rate_image
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_viewport_array2
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NV_viewport_swizzle
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NVX_binary_import
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NVX_image_view_handle
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_NVX_multiview_per_view_attributes
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_AMD_buffer_marker
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_GOOGLE_hlsl_functionality1
+FillDeviceExtensionNames()    =>  vulkan device extension name = VK_GOOGLE_user_type
+FillDeviceExtensionNames()    =>  VK_KHR_SWAPCHAIN_EXTENSION_NAME found successfully
+FillDeviceExtensionNames()    =>  Enabled vulkan device extension name = VK_KHR_swapchain
+FillDeviceExtensionNames()    -->  function completed
+CreateVulkanDevice()    =>  FillDeviceExtensionNames() successful
+CreateVulkanDevice()    =>  vkCreateDevice() successful
+CreateVulkanDevice()  -->  function completed
+Initialize()    =>  CreateVulkanDevice() successful
+GetDeviceQueue()  >>>  function started
+GetDeviceQueue()  =>  vkGetDeviceQueue() successful
+GetDeviceQueue()  -->  function completed
+CreateSwapchain()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 2 format counts
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
+GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
+CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
+CreateSwapchain()    =>  minImageCount 3
+CreateSwapchain()    =>  maxImageCount 8
+CreateSwapchain()    =>  swapchain image width x height = 800 x 600
+CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
+GetPhysicalDevicePresentMode()  >>>  function started
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  found 2 present mode
+GetPhysicalDevicePresentMode()    =>  found 3 present mode
+GetPhysicalDevicePresentMode()    =>  found 0 present mode
+GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
+GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_FIFO_KHR for present mode
+GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
+GetPhysicalDevicePresentMode()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
+CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
+CreateSwapchain()  -->  function completed
+Initialize()    =>  CreateSwapchain() successful
+CreateImagesAndImageViews()  >>>  function started
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 2 
+GetSupportedDepthFormat()  >>>  function started
+GetSupportedDepthFormat()  >>>  Options for Depth Format
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT_S8_UINT 130
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT 126
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D24_UNORM_S8_UINT 129
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM_S8_UINT 128
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM 124
+GetSupportedDepthFormat()  >>>  Selected Depth Format: 130
+GetSupportedDepthFormat()  -->  function completed
+CreateImagesAndImageViews()    =>  GetSupportedDepthFormat() successful
+CreateImagesAndImageViews()    =>  vkCreateImage() successful for depth image
+CreateImagesAndImageViews()    =>  vkAllocateMemory() successful 
+CreateImagesAndImageViews()    =>  vkBindImageMemory() successful 
+CreateImagesAndImageViews()    =>  vkCreateImageView() successful 
+CreateImagesAndImageViews()  -->  function completed
+Initialize()    =>  CreateImagesAndImageViews() successful
+CreateCommandPool()  >>>  function started
+CreateCommandPool()    =>  vkCreateCommandPool() successful
+CreateCommandPool()  -->  function completed
+Initialize()    =>  CreateCommandPool() successful
+CreateCommandBuffers()  >>>  function started
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 2 
+CreateCommandBuffers()  -->  function completed
+Initialize()    =>  CreateCommandBuffers() successful
+CreateVertexBuffer()  >>>  function started
+CreateVertexBuffer()    =>  vkCreateBuffer() successful for Position
+CreateVertexBuffer()    =>  vkAllocateMemory() successful for Position
+CreateVertexBuffer()    =>  vkBindBufferMemory() successful for Position
+CreateVertexBuffer()    =>  vkMapMemory() successful for Position
+CreateVertexBuffer()    =>  vkCreateBuffer() successful for Color
+CreateVertexBuffer()    =>  vkAllocateMemory() successful for Color
+CreateVertexBuffer()    =>  vkBindBufferMemory() successful for Color
+CreateVertexBuffer()    =>  vkMapMemory() successful for Color
+CreateVertexBuffer()    =>  vkCreateBuffer() successful for Position
+CreateVertexBuffer()    =>  vkAllocateMemory() successful for Position
+CreateVertexBuffer()    =>  vkBindBufferMemory() successful for Position
+CreateVertexBuffer()    =>  vkMapMemory() successful for Position
+CreateVertexBuffer()    =>  vkCreateBuffer() successful for Color
+CreateVertexBuffer()    =>  vkAllocateMemory() successful for Color
+CreateVertexBuffer()    =>  vkBindBufferMemory() successful for Color
+CreateVertexBuffer()    =>  vkMapMemory() successful for Color
+CreateVertexBuffer()  -->  function completed
+Initialize()    =>  CreateVertexBuffer() successful
+CreateUniformBuffer()  >>>  function started
+CreateUniformBuffer()    =>  vkCreateBuffer() successful 
+CreateUniformBuffer()    =>  vkAllocateMemory() successful 
+CreateUniformBuffer()    =>  vkBindBufferMemory() successful 
+CreateUniformBuffer()    =>  vkCreateBuffer() successful 
+CreateUniformBuffer()    =>  vkAllocateMemory() successful 
+CreateUniformBuffer()    =>  vkBindBufferMemory() successful 
+CreateUniformBuffer()    =>  UpdateUniformBuffer() successful 
+CreateUniformBuffer()  -->  function completed
+Initialize()    =>  CreateUniformBuffer() successful
+CreateShaders()  >>>  function started
+CreateShaders()  -->  successful to open vertex shader spv file
+CreateShaders()  -->  successful to read vertex shader spv file
+CreateShaders()    =>  vkCreateShaderModule() successful for vertex shader 
+CreateShaders()    =>  vertex shader data successfully freed 
+CreateShaders()    =>  vertex shader module successfully created 
+CreateShaders()  -->  successful to open fragment shader spv file
+CreateShaders()  -->  successful to read fragment shader spv file
+CreateShaders()    =>  vkCreateShaderModule() successful for fragment shader 
+CreateShaders()    =>  fragment shader data successfully freed 
+CreateShaders()    =>  fragment shader module successfully created 
+CreateShaders()  -->  function completed
+Initialize()    =>  CreateShaders() successful
+CreateDescriptorSetLayout()  >>>  function started
+CreateDescriptorSetLayout()    =>  vkCreateDescriptorSetLayout() successful 
+CreateDescriptorSetLayout()  -->  function completed
+Initialize()    =>  CreateDescriptorSetLayout() successful
+CreatePipelineLayout()  >>>  function started
+CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
+CreatePipelineLayout()  -->  function completed
+Initialize()    =>  CreatePipelineLayout() successful
+CreateDescriptorPool()  >>>  function started
+CreateDescriptorPool()    =>  vkCreateDescriptorPool() successful 
+CreateDescriptorPool()  -->  function completed
+Initialize()    =>  CreateDescriptorPool() successful
+CreateDescriptorSet()  >>>  function started
+CreateDescriptorSet()    =>  vkAllocateDescriptorSets() successful for TRIANGLE
+CreateDescriptorSet()    =>  vkAllocateDescriptorSets() successful for RECTANGLE
+CreateDescriptorSet()  -->  function completed
+Initialize()    =>  CreateDescriptorSet() successful
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+Initialize()    =>  CreateRenderPass() successful
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+Initialize()    =>  CreatePipeline() successful
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 2 
+CreateFrameBuffers()  -->  function completed
+Initialize()    =>  CreateFrameBuffers() successful
+CreateSemaphores()  >>>  function started
+CreateSemaphores()    =>  vkCreateSemaphore() successful for vkSemaphore_backbuffer 
+CreateSemaphores()    =>  vkCreateSemaphore() successful for vkSemaphore_rendercomplete 
+CreateSemaphores()  -->  function completed
+Initialize()    =>  CreateSemaphores() successful
+CreateFences()  >>>  function started
+CreateFences()    =>  vkCreateFence() successful for iteration 0 
+CreateFences()    =>  vkCreateFence() successful for iteration 1 
+CreateFences()    =>  vkCreateFence() successful for iteration 2 
+CreateFences()  -->  function completed
+Initialize()    =>  CreateFences() successful
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()  -->  function completed
+Initialize()    =>  BuildCommandBuffers() successful
+Initialize()    -->  function completed
+main() -> initialize() succeeded.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+Resize()    >>>  function started
+Resize()  =>  vkDeviceWaitIdle() is done
+Resize()  =>  vkDestroyFramebuffer() successful for 0
+Resize()  =>  vkDestroyFramebuffer() successful for 1
+Resize()  =>  vkDestroyFramebuffer() successful for 2
+Resize()  =>  vkFramebuffer_array freed successfully
+Resize()  =>  vkDestroyRenderPass() successful
+Resize()  =>  vkDestroyPipeline() successful
+Resize()  =>  vkDestroyPipelineLayout() successful
+Resize()  =>  vkFreeCommandBuffers() successful for 0
+Resize()  =>  vkFreeCommandBuffers() successful for 1
+Resize()  =>  vkFreeCommandBuffers() successful for 2
+Resize()  =>  vkCommandBuffer_array freed successfully
+Resize()  =>  vkDestroyImageView() successful for vkImageView_depth
+Resize()  =>  vkFreeMemory() successful for vkDeviceMemory_depth
+Resize()  =>  vkDestroyImage() successful for vkImage_depth
+Resize()  =>  vkDestroyImageView() successful for 0
+Resize()  =>  vkDestroyImageView() successful for 1
+Resize()  =>  vkDestroyImageView() successful for 2
+Resize()  =>  swapchainImageView_array freed successfully
+Resize()  =>  swapchainImage_array freed successfully
+Resize()  =>  vkDestroySwapchainKHR() successful
+CreateSwapchain()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 2 format counts
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
+GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
+CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
+CreateSwapchain()    =>  minImageCount 3
+CreateSwapchain()    =>  maxImageCount 8
+CreateSwapchain()    =>  swapchain image width x height = 800 x 600
+CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
+GetPhysicalDevicePresentMode()  >>>  function started
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  found 2 present mode
+GetPhysicalDevicePresentMode()    =>  found 3 present mode
+GetPhysicalDevicePresentMode()    =>  found 0 present mode
+GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
+GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_FIFO_KHR for present mode
+GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
+GetPhysicalDevicePresentMode()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
+CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
+CreateSwapchain()  -->  function completed
+CreateImagesAndImageViews()  >>>  function started
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 2 
+GetSupportedDepthFormat()  >>>  function started
+GetSupportedDepthFormat()  >>>  Options for Depth Format
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT_S8_UINT 130
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT 126
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D24_UNORM_S8_UINT 129
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM_S8_UINT 128
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM 124
+GetSupportedDepthFormat()  >>>  Selected Depth Format: 130
+GetSupportedDepthFormat()  -->  function completed
+CreateImagesAndImageViews()    =>  GetSupportedDepthFormat() successful
+CreateImagesAndImageViews()    =>  vkCreateImage() successful for depth image
+CreateImagesAndImageViews()    =>  vkAllocateMemory() successful 
+CreateImagesAndImageViews()    =>  vkBindImageMemory() successful 
+CreateImagesAndImageViews()    =>  vkCreateImageView() successful 
+CreateImagesAndImageViews()  -->  function completed
+CreateCommandBuffers()  >>>  function started
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 2 
+CreateCommandBuffers()  -->  function completed
+CreatePipelineLayout()  >>>  function started
+CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
+CreatePipelineLayout()  -->  function completed
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 2 
+CreateFrameBuffers()  -->  function completed
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()  -->  function completed
+Resize()    -->  function completed
+Resize()    >>>  function started
+Resize()  =>  vkDeviceWaitIdle() is done
+Resize()  =>  vkDestroyFramebuffer() successful for 0
+Resize()  =>  vkDestroyFramebuffer() successful for 1
+Resize()  =>  vkDestroyFramebuffer() successful for 2
+Resize()  =>  vkFramebuffer_array freed successfully
+Resize()  =>  vkDestroyRenderPass() successful
+Resize()  =>  vkDestroyPipeline() successful
+Resize()  =>  vkDestroyPipelineLayout() successful
+Resize()  =>  vkFreeCommandBuffers() successful for 0
+Resize()  =>  vkFreeCommandBuffers() successful for 1
+Resize()  =>  vkFreeCommandBuffers() successful for 2
+Resize()  =>  vkCommandBuffer_array freed successfully
+Resize()  =>  vkDestroyImageView() successful for vkImageView_depth
+Resize()  =>  vkFreeMemory() successful for vkDeviceMemory_depth
+Resize()  =>  vkDestroyImage() successful for vkImage_depth
+Resize()  =>  vkDestroyImageView() successful for 0
+Resize()  =>  vkDestroyImageView() successful for 1
+Resize()  =>  vkDestroyImageView() successful for 2
+Resize()  =>  swapchainImageView_array freed successfully
+Resize()  =>  swapchainImage_array freed successfully
+Resize()  =>  vkDestroySwapchainKHR() successful
+CreateSwapchain()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 2 format counts
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
+GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
+CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
+CreateSwapchain()    =>  minImageCount 3
+CreateSwapchain()    =>  maxImageCount 8
+CreateSwapchain()    =>  swapchain image width x height = 800 x 600
+CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
+GetPhysicalDevicePresentMode()  >>>  function started
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  found 2 present mode
+GetPhysicalDevicePresentMode()    =>  found 3 present mode
+GetPhysicalDevicePresentMode()    =>  found 0 present mode
+GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
+GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_FIFO_KHR for present mode
+GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
+GetPhysicalDevicePresentMode()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
+CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
+CreateSwapchain()  -->  function completed
+CreateImagesAndImageViews()  >>>  function started
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 2 
+GetSupportedDepthFormat()  >>>  function started
+GetSupportedDepthFormat()  >>>  Options for Depth Format
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT_S8_UINT 130
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT 126
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D24_UNORM_S8_UINT 129
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM_S8_UINT 128
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM 124
+GetSupportedDepthFormat()  >>>  Selected Depth Format: 130
+GetSupportedDepthFormat()  -->  function completed
+CreateImagesAndImageViews()    =>  GetSupportedDepthFormat() successful
+CreateImagesAndImageViews()    =>  vkCreateImage() successful for depth image
+CreateImagesAndImageViews()    =>  vkAllocateMemory() successful 
+CreateImagesAndImageViews()    =>  vkBindImageMemory() successful 
+CreateImagesAndImageViews()    =>  vkCreateImageView() successful 
+CreateImagesAndImageViews()  -->  function completed
+CreateCommandBuffers()  >>>  function started
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 2 
+CreateCommandBuffers()  -->  function completed
+CreatePipelineLayout()  >>>  function started
+CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
+CreatePipelineLayout()  -->  function completed
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 2 
+CreateFrameBuffers()  -->  function completed
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()  -->  function completed
+Resize()    -->  function completed
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+Resize()    >>>  function started
+Resize()  =>  vkDeviceWaitIdle() is done
+Resize()  =>  vkDestroyFramebuffer() successful for 0
+Resize()  =>  vkDestroyFramebuffer() successful for 1
+Resize()  =>  vkDestroyFramebuffer() successful for 2
+Resize()  =>  vkFramebuffer_array freed successfully
+Resize()  =>  vkDestroyRenderPass() successful
+Resize()  =>  vkDestroyPipeline() successful
+Resize()  =>  vkDestroyPipelineLayout() successful
+Resize()  =>  vkFreeCommandBuffers() successful for 0
+Resize()  =>  vkFreeCommandBuffers() successful for 1
+Resize()  =>  vkFreeCommandBuffers() successful for 2
+Resize()  =>  vkCommandBuffer_array freed successfully
+Resize()  =>  vkDestroyImageView() successful for vkImageView_depth
+Resize()  =>  vkFreeMemory() successful for vkDeviceMemory_depth
+Resize()  =>  vkDestroyImage() successful for vkImage_depth
+Resize()  =>  vkDestroyImageView() successful for 0
+Resize()  =>  vkDestroyImageView() successful for 1
+Resize()  =>  vkDestroyImageView() successful for 2
+Resize()  =>  swapchainImageView_array freed successfully
+Resize()  =>  swapchainImage_array freed successfully
+Resize()  =>  vkDestroySwapchainKHR() successful
+CreateSwapchain()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 2 format counts
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
+GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
+CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
+CreateSwapchain()    =>  minImageCount 3
+CreateSwapchain()    =>  maxImageCount 8
+CreateSwapchain()    =>  swapchain image width x height = 2560 x 1408
+CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
+GetPhysicalDevicePresentMode()  >>>  function started
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  found 2 present mode
+GetPhysicalDevicePresentMode()    =>  found 3 present mode
+GetPhysicalDevicePresentMode()    =>  found 0 present mode
+GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
+GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_FIFO_KHR for present mode
+GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
+GetPhysicalDevicePresentMode()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
+CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
+CreateSwapchain()  -->  function completed
+CreateImagesAndImageViews()  >>>  function started
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 2 
+GetSupportedDepthFormat()  >>>  function started
+GetSupportedDepthFormat()  >>>  Options for Depth Format
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT_S8_UINT 130
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT 126
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D24_UNORM_S8_UINT 129
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM_S8_UINT 128
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM 124
+GetSupportedDepthFormat()  >>>  Selected Depth Format: 130
+GetSupportedDepthFormat()  -->  function completed
+CreateImagesAndImageViews()    =>  GetSupportedDepthFormat() successful
+CreateImagesAndImageViews()    =>  vkCreateImage() successful for depth image
+CreateImagesAndImageViews()    =>  vkAllocateMemory() successful 
+CreateImagesAndImageViews()    =>  vkBindImageMemory() successful 
+CreateImagesAndImageViews()    =>  vkCreateImageView() successful 
+CreateImagesAndImageViews()  -->  function completed
+CreateCommandBuffers()  >>>  function started
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 2 
+CreateCommandBuffers()  -->  function completed
+CreatePipelineLayout()  >>>  function started
+CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
+CreatePipelineLayout()  -->  function completed
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 2 
+CreateFrameBuffers()  -->  function completed
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()  -->  function completed
+Resize()    -->  function completed
+main() -> Window is not minimized.
+Resize()    >>>  function started
+Resize()  =>  vkDeviceWaitIdle() is done
+Resize()  =>  vkDestroyFramebuffer() successful for 0
+Resize()  =>  vkDestroyFramebuffer() successful for 1
+Resize()  =>  vkDestroyFramebuffer() successful for 2
+Resize()  =>  vkFramebuffer_array freed successfully
+Resize()  =>  vkDestroyRenderPass() successful
+Resize()  =>  vkDestroyPipeline() successful
+Resize()  =>  vkDestroyPipelineLayout() successful
+Resize()  =>  vkFreeCommandBuffers() successful for 0
+Resize()  =>  vkFreeCommandBuffers() successful for 1
+Resize()  =>  vkFreeCommandBuffers() successful for 2
+Resize()  =>  vkCommandBuffer_array freed successfully
+Resize()  =>  vkDestroyImageView() successful for vkImageView_depth
+Resize()  =>  vkFreeMemory() successful for vkDeviceMemory_depth
+Resize()  =>  vkDestroyImage() successful for vkImage_depth
+Resize()  =>  vkDestroyImageView() successful for 0
+Resize()  =>  vkDestroyImageView() successful for 1
+Resize()  =>  vkDestroyImageView() successful for 2
+Resize()  =>  swapchainImageView_array freed successfully
+Resize()  =>  swapchainImage_array freed successfully
+Resize()  =>  vkDestroySwapchainKHR() successful
+CreateSwapchain()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 2 format counts
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
+GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
+CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
+CreateSwapchain()    =>  minImageCount 3
+CreateSwapchain()    =>  maxImageCount 8
+CreateSwapchain()    =>  swapchain image width x height = 2560 x 1440
+CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
+GetPhysicalDevicePresentMode()  >>>  function started
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  found 2 present mode
+GetPhysicalDevicePresentMode()    =>  found 3 present mode
+GetPhysicalDevicePresentMode()    =>  found 0 present mode
+GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
+GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_FIFO_KHR for present mode
+GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
+GetPhysicalDevicePresentMode()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
+CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
+CreateSwapchain()  -->  function completed
+CreateImagesAndImageViews()  >>>  function started
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 2 
+GetSupportedDepthFormat()  >>>  function started
+GetSupportedDepthFormat()  >>>  Options for Depth Format
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT_S8_UINT 130
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT 126
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D24_UNORM_S8_UINT 129
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM_S8_UINT 128
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM 124
+GetSupportedDepthFormat()  >>>  Selected Depth Format: 130
+GetSupportedDepthFormat()  -->  function completed
+CreateImagesAndImageViews()    =>  GetSupportedDepthFormat() successful
+CreateImagesAndImageViews()    =>  vkCreateImage() successful for depth image
+CreateImagesAndImageViews()    =>  vkAllocateMemory() successful 
+CreateImagesAndImageViews()    =>  vkBindImageMemory() successful 
+CreateImagesAndImageViews()    =>  vkCreateImageView() successful 
+CreateImagesAndImageViews()  -->  function completed
+CreateCommandBuffers()  >>>  function started
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 2 
+CreateCommandBuffers()  -->  function completed
+CreatePipelineLayout()  >>>  function started
+CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
+CreatePipelineLayout()  -->  function completed
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 2 
+CreateFrameBuffers()  -->  function completed
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()  -->  function completed
+Resize()    -->  function completed
+main() -> Window is not minimized.
+main() -> Window is not minimized.
+Resize()    >>>  function started
+Resize()  =>  vkDeviceWaitIdle() is done
+Resize()  =>  vkDestroyFramebuffer() successful for 0
+Resize()  =>  vkDestroyFramebuffer() successful for 1
+Resize()  =>  vkDestroyFramebuffer() successful for 2
+Resize()  =>  vkFramebuffer_array freed successfully
+Resize()  =>  vkDestroyRenderPass() successful
+Resize()  =>  vkDestroyPipeline() successful
+Resize()  =>  vkDestroyPipelineLayout() successful
+Resize()  =>  vkFreeCommandBuffers() successful for 0
+Resize()  =>  vkFreeCommandBuffers() successful for 1
+Resize()  =>  vkFreeCommandBuffers() successful for 2
+Resize()  =>  vkCommandBuffer_array freed successfully
+Resize()  =>  vkDestroyImageView() successful for vkImageView_depth
+Resize()  =>  vkFreeMemory() successful for vkDeviceMemory_depth
+Resize()  =>  vkDestroyImage() successful for vkImage_depth
+Resize()  =>  vkDestroyImageView() successful for 0
+Resize()  =>  vkDestroyImageView() successful for 1
+Resize()  =>  vkDestroyImageView() successful for 2
+Resize()  =>  swapchainImageView_array freed successfully
+Resize()  =>  swapchainImage_array freed successfully
+Resize()  =>  vkDestroySwapchainKHR() successful
+CreateSwapchain()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 2 format counts
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
+GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
+CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
+CreateSwapchain()    =>  minImageCount 3
+CreateSwapchain()    =>  maxImageCount 8
+CreateSwapchain()    =>  swapchain image width x height = 800 x 632
+CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
+GetPhysicalDevicePresentMode()  >>>  function started
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  found 2 present mode
+GetPhysicalDevicePresentMode()    =>  found 3 present mode
+GetPhysicalDevicePresentMode()    =>  found 0 present mode
+GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
+GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_FIFO_KHR for present mode
+GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
+GetPhysicalDevicePresentMode()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
+CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
+CreateSwapchain()  -->  function completed
+CreateImagesAndImageViews()  >>>  function started
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 2 
+GetSupportedDepthFormat()  >>>  function started
+GetSupportedDepthFormat()  >>>  Options for Depth Format
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT_S8_UINT 130
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT 126
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D24_UNORM_S8_UINT 129
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM_S8_UINT 128
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM 124
+GetSupportedDepthFormat()  >>>  Selected Depth Format: 130
+GetSupportedDepthFormat()  -->  function completed
+CreateImagesAndImageViews()    =>  GetSupportedDepthFormat() successful
+CreateImagesAndImageViews()    =>  vkCreateImage() successful for depth image
+CreateImagesAndImageViews()    =>  vkAllocateMemory() successful 
+CreateImagesAndImageViews()    =>  vkBindImageMemory() successful 
+CreateImagesAndImageViews()    =>  vkCreateImageView() successful 
+CreateImagesAndImageViews()  -->  function completed
+CreateCommandBuffers()  >>>  function started
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 2 
+CreateCommandBuffers()  -->  function completed
+CreatePipelineLayout()  >>>  function started
+CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
+CreatePipelineLayout()  -->  function completed
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 2 
+CreateFrameBuffers()  -->  function completed
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()  -->  function completed
+Resize()    -->  function completed
+main() -> Window is not minimized.
+Resize()    >>>  function started
+Resize()  =>  vkDeviceWaitIdle() is done
+Resize()  =>  vkDestroyFramebuffer() successful for 0
+Resize()  =>  vkDestroyFramebuffer() successful for 1
+Resize()  =>  vkDestroyFramebuffer() successful for 2
+Resize()  =>  vkFramebuffer_array freed successfully
+Resize()  =>  vkDestroyRenderPass() successful
+Resize()  =>  vkDestroyPipeline() successful
+Resize()  =>  vkDestroyPipelineLayout() successful
+Resize()  =>  vkFreeCommandBuffers() successful for 0
+Resize()  =>  vkFreeCommandBuffers() successful for 1
+Resize()  =>  vkFreeCommandBuffers() successful for 2
+Resize()  =>  vkCommandBuffer_array freed successfully
+Resize()  =>  vkDestroyImageView() successful for vkImageView_depth
+Resize()  =>  vkFreeMemory() successful for vkDeviceMemory_depth
+Resize()  =>  vkDestroyImage() successful for vkImage_depth
+Resize()  =>  vkDestroyImageView() successful for 0
+Resize()  =>  vkDestroyImageView() successful for 1
+Resize()  =>  vkDestroyImageView() successful for 2
+Resize()  =>  swapchainImageView_array freed successfully
+Resize()  =>  swapchainImage_array freed successfully
+Resize()  =>  vkDestroySwapchainKHR() successful
+CreateSwapchain()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 2 format counts
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
+GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
+CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
+CreateSwapchain()    =>  minImageCount 3
+CreateSwapchain()    =>  maxImageCount 8
+CreateSwapchain()    =>  swapchain image width x height = 800 x 632
+CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
+GetPhysicalDevicePresentMode()  >>>  function started
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  found 2 present mode
+GetPhysicalDevicePresentMode()    =>  found 3 present mode
+GetPhysicalDevicePresentMode()    =>  found 0 present mode
+GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
+GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_FIFO_KHR for present mode
+GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
+GetPhysicalDevicePresentMode()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
+CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
+CreateSwapchain()  -->  function completed
+CreateImagesAndImageViews()  >>>  function started
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 2 
+GetSupportedDepthFormat()  >>>  function started
+GetSupportedDepthFormat()  >>>  Options for Depth Format
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT_S8_UINT 130
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT 126
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D24_UNORM_S8_UINT 129
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM_S8_UINT 128
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM 124
+GetSupportedDepthFormat()  >>>  Selected Depth Format: 130
+GetSupportedDepthFormat()  -->  function completed
+CreateImagesAndImageViews()    =>  GetSupportedDepthFormat() successful
+CreateImagesAndImageViews()    =>  vkCreateImage() successful for depth image
+CreateImagesAndImageViews()    =>  vkAllocateMemory() successful 
+CreateImagesAndImageViews()    =>  vkBindImageMemory() successful 
+CreateImagesAndImageViews()    =>  vkCreateImageView() successful 
+CreateImagesAndImageViews()  -->  function completed
+CreateCommandBuffers()  >>>  function started
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 2 
+CreateCommandBuffers()  -->  function completed
+CreatePipelineLayout()  >>>  function started
+CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
+CreatePipelineLayout()  -->  function completed
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 2 
+CreateFrameBuffers()  -->  function completed
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()  -->  function completed
+Resize()    -->  function completed
+main() -> Window is not minimized.
+Resize()    >>>  function started
+Resize()  =>  vkDeviceWaitIdle() is done
+Resize()  =>  vkDestroyFramebuffer() successful for 0
+Resize()  =>  vkDestroyFramebuffer() successful for 1
+Resize()  =>  vkDestroyFramebuffer() successful for 2
+Resize()  =>  vkFramebuffer_array freed successfully
+Resize()  =>  vkDestroyRenderPass() successful
+Resize()  =>  vkDestroyPipeline() successful
+Resize()  =>  vkDestroyPipelineLayout() successful
+Resize()  =>  vkFreeCommandBuffers() successful for 0
+Resize()  =>  vkFreeCommandBuffers() successful for 1
+Resize()  =>  vkFreeCommandBuffers() successful for 2
+Resize()  =>  vkCommandBuffer_array freed successfully
+Resize()  =>  vkDestroyImageView() successful for vkImageView_depth
+Resize()  =>  vkFreeMemory() successful for vkDeviceMemory_depth
+Resize()  =>  vkDestroyImage() successful for vkImage_depth
+Resize()  =>  vkDestroyImageView() successful for 0
+Resize()  =>  vkDestroyImageView() successful for 1
+Resize()  =>  vkDestroyImageView() successful for 2
+Resize()  =>  swapchainImageView_array freed successfully
+Resize()  =>  swapchainImage_array freed successfully
+Resize()  =>  vkDestroySwapchainKHR() successful
+CreateSwapchain()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  >>>  function started
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() first call successful with 2 format counts
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkSurfaceFormatKHR_array successfully allocated
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  vkGetPhysicalDeviceSurfaceFormatsKHR() second call
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 44 for surfaceColorFormat
+GetPhysicalDeviceSurfaceFormatAndColorSpace()    =>  selected 0 for color space
+GetPhysicalDeviceSurfaceFormatAndColorSpace() =>  vkSurfaceFormatKHR_array successfully freed
+GetPhysicalDeviceSurfaceFormatAndColorSpace()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDeviceSurfaceFormatAndColorSpace() successful
+CreateSwapchain()    =>  vkGetPhysicalDeviceSurfaceCapabilitiesKHR() successful
+CreateSwapchain()    =>  minImageCount 3
+CreateSwapchain()    =>  maxImageCount 8
+CreateSwapchain()    =>  swapchain image width x height = 800 x 600
+CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = 1
+GetPhysicalDevicePresentMode()  >>>  function started
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() first call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  vkGetPhysicalDeviceSurfacePresentModesKHR() second call successful with 4 presentModeCount
+GetPhysicalDevicePresentMode()    =>  found 2 present mode
+GetPhysicalDevicePresentMode()    =>  found 3 present mode
+GetPhysicalDevicePresentMode()    =>  found 0 present mode
+GetPhysicalDevicePresentMode()    =>  found 1000361000 present mode
+GetPhysicalDevicePresentMode()    =>  selected VK_PRESENT_MODE_FIFO_KHR for present mode
+GetPhysicalDevicePresentMode() =>  vkPresentModeKHR_array successfully freed
+GetPhysicalDevicePresentMode()  -->  function completed
+CreateSwapchain()    =>  GetPhysicalDevicePresentMode() successful
+CreateSwapchain()    =>  vkCreateSwapchainKHR() successful
+CreateSwapchain()  -->  function completed
+CreateImagesAndImageViews()  >>>  function started
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() first call successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkGetSwapchainImagesKHR() second successful with 3 swapchainImageCount
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 0 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 1 
+CreateImagesAndImageViews()    =>  vkCreateImageViews() successful for iteration 2 
+GetSupportedDepthFormat()  >>>  function started
+GetSupportedDepthFormat()  >>>  Options for Depth Format
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT_S8_UINT 130
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D32_SFLOAT 126
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D24_UNORM_S8_UINT 129
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM_S8_UINT 128
+GetSupportedDepthFormat()  >>>  VK_FORMAT_D16_UNORM 124
+GetSupportedDepthFormat()  >>>  Selected Depth Format: 130
+GetSupportedDepthFormat()  -->  function completed
+CreateImagesAndImageViews()    =>  GetSupportedDepthFormat() successful
+CreateImagesAndImageViews()    =>  vkCreateImage() successful for depth image
+CreateImagesAndImageViews()    =>  vkAllocateMemory() successful 
+CreateImagesAndImageViews()    =>  vkBindImageMemory() successful 
+CreateImagesAndImageViews()    =>  vkCreateImageView() successful 
+CreateImagesAndImageViews()  -->  function completed
+CreateCommandBuffers()  >>>  function started
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 0 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 1 
+CreateCommandBuffers()    =>  vkAllocateCommandBuffers() successful for iteration 2 
+CreateCommandBuffers()  -->  function completed
+CreatePipelineLayout()  >>>  function started
+CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful 
+CreatePipelineLayout()  -->  function completed
+CreateRenderPass()  >>>  function started
+CreateRenderPass()    =>  vkCreateRenderPass() successful 
+CreateRenderPass()  -->  function completed
+CreatePipeline()  >>>  function started
+CreatePipeline()    =>  vkCreatePipelineCache() successful 
+CreatePipeline()    =>  vkCreateGraphicsPipelines() successful 
+CreatePipeline()  -->  vkDestroyPipelineCache() successful
+CreatePipeline()  -->  function completed
+CreateFrameBuffers()  >>>  function started
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 0 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 1 
+CreateFrameBuffers()    =>  vkCreateFramebuffer() successful for iteration 2 
+CreateFrameBuffers()  -->  function completed
+BuildCommandBuffers()  >>>  function started
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 0 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 1 buffer
+BuildCommandBuffers()    =>  vkResetCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkBeginCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()    =>  vkEndCommandBuffer() successful for 2 buffer
+BuildCommandBuffers()  -->  function completed
+Resize()    -->  function completed
+Uninitialize()  >>>  function started
+Uninitialize()  =>  vkDeviceWaitIdle() is done
+Uninitialize()  =>  vkDestroyFence() successful for 0
+Uninitialize()  =>  vkDestroyFence() successful for 1
+Uninitialize()  =>  vkDestroyFence() successful for 2
+Uninitialize()  =>  vkFence_array freed successfully
+Uninitialize()  =>  vkDestroySemaphore() successful for vkSemaphore_rendercomplete
+Uninitialize()  =>  vkDestroySemaphore() successful for vkSemaphore_backbuffer
+Uninitialize()  =>  vkDestroyFramebuffer() successful for 0
+Uninitialize()  =>  vkDestroyFramebuffer() successful for 1
+Uninitialize()  =>  vkDestroyFramebuffer() successful for 2
+Uninitialize()  =>  vkFramebuffer_array freed successfully
+Uninitialize()  =>  vkDestroyRenderPass() successful
+Uninitialize()  =>  vkDestroyDescriptorPool() successful for vkDescriptorPool and vkDescriptorSet
+Uninitialize()  =>  vkDestroyPipelineLayout() successful
+Uninitialize()  =>  vkDestroyDescriptorSetLayout() successful
+Uninitialize()  =>  vkDestroyPipeline() successful
+Uninitialize()  =>  vkDestroyShaderModule() successful for vkShaderModule_fragment_shader
+Uninitialize()  =>  vkDestroyShaderModule() successful for vkShaderModule_vertex_shader
+Uninitialize()  =>  vkFreeMemory() successful for uniformData_pyramid.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for uniformData_pyramid.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for uniformData_cube.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for uniformData_cube.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for vertexData_color_cube.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_color_cube.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for vertexData_position_cube.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_position_cube.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for vertexData_color_pyramid.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_color_pyramid.vkBuffer
+Uninitialize()  =>  vkFreeMemory() successful for vertexData_position_pyramid.vkDeviceMemory
+Uninitialize()  =>  vkDestroyBuffer() successful for vertexData_position_pyramid.vkBuffer
+Uninitialize()  =>  vkFreeCommandBuffers() successful for 0
+Uninitialize()  =>  vkFreeCommandBuffers() successful for 1
+Uninitialize()  =>  vkFreeCommandBuffers() successful for 2
+Uninitialize()  =>  vkCommandBuffer_array freed successfully
+Uninitialize()  =>  vkDestroyCommandPool() successful
+Resize()  =>  vkDestroyImageView() successful for vkImageView_depth
+Resize()  =>  vkFreeMemory() successful for vkDeviceMemory_depth
+Resize()  =>  vkDestroyImage() successful for vkImage_depth
+Uninitialize()  =>  vkDestroyImageView() successful for 0
+Uninitialize()  =>  vkDestroyImageView() successful for 1
+Uninitialize()  =>  vkDestroyImageView() successful for 2
+Uninitialize()  =>  swapchainImageView_array freed successfully
+Uninitialize()  =>  swapchainImage_array freed successfully
+Uninitialize()  =>  vkDestroySwapchainKHR() successful
+Uninitialize()  =>  vkDestroy() successful 
+Uninitialize()  =>  vkDestroySurfaceKHR() successful
+Uninitialize()  =>  vkDestroyDebugReportCallbackEXT_fnptr() successful
+Uninitialize()  =>  vkDestroyInstance() successful
+Uninitialize()  -->  program terminated successfully
