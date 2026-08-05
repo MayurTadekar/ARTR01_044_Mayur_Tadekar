@@ -2832,6 +2832,7 @@ VkResult CreateSwapchain(VkBool32 vSync)
     // Set swapchain image usage flag
     // VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT : VIMP must be given
     // VK_IMAGE_USAGE_TRANSFER_SRC_BIT : this is optional but is given everytime for texture, FBO, compute    vkImageUsageFlags = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
+    vkImageUsageFlags = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
 
     // Whether to consider Pre-transform/Flipping or not
     if (vkSurfaceCapabilitiesKHR.supportedTransforms & VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR)
