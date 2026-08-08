@@ -1,7 +1,7 @@
 /**************************************************
  * S.G.M.P
  * @file: VK.c
- * @brief: Step 07 Device Extensions
+ * @brief: Step 08 Vulkan Device
  * @author: Mayur S. Tadekar(mrtadekar@gmail.com)
  * @Copyright ©2020-2025 MarshallingVoid
  * @date: 09 June 2025 (Monday) 11:51:14 AM
