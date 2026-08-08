@@ -572,8 +572,8 @@ Bool isWindowMinimized(void)
     return(windowMinimized);
 }
 
-VkResult initialize(void)
-{
+VkResult initialize(void) // Function Definition
+{ 
     // Function Declaration
 
 

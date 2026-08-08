@@ -82,9 +82,8 @@ FILE* gpLogFile = NULL; // Log file pointer
 //  Extension Needed
 //  VK_KHR_SURFACE_EXTENSION_NAME
 //  VK_KHR_WIN32_SURFACE_EXTENSION_NAME
-//  VK_EXT_DEBUG_REPORT_EXTENSION_NAME
 uint32_t enabledInstanceExtensionCount = 0;
-const char *enabledInstanceExtensionNames_array[3]; // 2 cha 3 kela
+const char *enabledInstanceExtensionNames_array[2];
 
 //  Step 03 - Vulkan Instance
 VkInstance vkInstance = VK_NULL_HANDLE;
@@ -126,7 +125,7 @@ VkSwapchainKHR vkSwapchainKHR = VK_NULL_HANDLE;
 VkExtent2D vkExtent2D_swapchain;
 
 // Step 13 - Swapchain Images and ImageViews
-uint32_t swapchainImageCount = 0;
+uint32_t swapchainImageCount = UINT32_MAX;
 VkImage *swapchainImage_array = NULL;
 VkImageView *swapchainImageView_array = NULL;
 
@@ -151,63 +150,8 @@ VkFence *vkFence_array = NULL;
 VkClearColorValue vkClearColorValue;
 
 // Step 20 - Render
-Bool bInitialized = False;
+BOOL bInitialize = FALSE;
 uint32_t currentImageIndex = UINT32_MAX; //  or UINT_MAX
-
-// Step 21 - Validation
-Bool bValidation = True; // This should be consistent with X11 Bool type which uses True/False
-uint32_t enabledValidationLayerCount = 0;
-const char *enabledValidationLayerName_array[1]; //  for VK_LAYER_KHRONOS_validation
-VkDebugReportCallbackEXT vkDebugReportCallbackEXT = VK_NULL_HANDLE;
-PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT_fnptr = NULL;
-
-// Step 22 - Vertex Buffer
-typedef struct
-{
-
-    VkBuffer vkBuffer;
-    VkDeviceMemory vkDeviceMemory;
-} VertexData;
-
-// Position
-VertexData vertexData_position;
-
-// Uniform related Buffers
-typedef struct
-{
-    glm::mat4 modelMatrix;
-    glm::mat4 viewMatrix;
-    glm::mat4 projectionMatrix;
-} MyUniformData;
-
-typedef struct
-{
-    VkBuffer vkBuffer;
-    VkDeviceMemory vkDeviceMemory;
-} UniformData;
-
-UniformData uniformData;
-
-// Step 23 - Shaders
-VkShaderModule vkShaderModule_vertex_shader = VK_NULL_HANDLE;
-VkShaderModule vkShaderModule_fragment_shader = VK_NULL_HANDLE;
-
-// Step 24 - DescriptorSetLayout
-VkDescriptorSetLayout vkDescriptorSetLayout = VK_NULL_HANDLE;
-
-// Step 25 - Pipeline Layout
-VkPipelineLayout vkPipelineLayout = VK_NULL_HANDLE;
-
-// Descriptor Pool
-VkDescriptorPool vkDescriptorPool = VK_NULL_HANDLE;
-
-// Descriptor Set
-VkDescriptorSet vkDescriptorSet = VK_NULL_HANDLE;
-
-// Step 26 Pipeline
-VkViewport vkViewport;
-VkRect2D vkRect2D_scissor;
-VkPipeline vkPipeline = VK_NULL_HANDLE;
 
 // Entry point function
 int main(int argc, char* argv[])
@@ -572,7 +516,7 @@ Bool isWindowMinimized(void)
     return(windowMinimized);
 }
 
-VkResult initialize(void)
+VkResult Initialize(void) // Function Definition
 {
     // Function Declaration
     VkResult CreateVulkanInstance(void);
@@ -584,7 +528,7 @@ VkResult initialize(void)
     VkResult CreateSwapchain(VkBool32);
     VkResult CreateImagesAndImageViews(void);
     VkResult CreateCommandPool(void);
-    VkResult CreateCommandBuffers(void);
+    VkResult CreateCommanBuffers(void);
     VkResult CreateRenderPass(void);
     VkResult CreateFrameBuffers(void);
     VkResult CreateSemaphores(void);
@@ -595,11 +539,6 @@ VkResult initialize(void)
     VkResult vkResult = VK_SUCCESS;
 
     // Code
-    if (True == bValidation)
-    {
-        fprintf(gpLogFile, "CreateVulkanInstance()    ||> VALIDATION \n");
-    }
-
     fprintf(gpLogFile, "Initialize()    >>>  function started\n");
 
     //  Get Vulkan Instance
@@ -613,6 +552,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()   =>  CreateVulkanInstance() successful\n");
     }
+
     //  Create Vulkan Presentation Surface
     vkResult = GetSupportedSurface();
     if (VK_SUCCESS != vkResult)
@@ -624,6 +564,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()   =>  GetSupportedSurface() successful\n");
     }
+
     //  Step 05 - Physical Device - Enumerate & Select Physical Device and its Queue Family Index
     vkResult = GetPhysicalDevice();
     if (VK_SUCCESS != vkResult)
@@ -635,6 +576,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  GetPhysicalDevice() successful\n");
     }
+
     //  Step 06 - Print VK Info
     vkResult = PrintVkInfo();
     if (VK_SUCCESS != vkResult)
@@ -646,6 +588,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  PrintVkInfo() successful\n");
     }
+
     // Step 08 - Vulkan Device
     vkResult = CreateVulkanDevice();
     if (VK_SUCCESS != vkResult)
@@ -657,7 +600,9 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateVulkanDevice() successful\n");
     }
+
     GetDeviceQueue();
+
     // Swapchain
     vkResult = CreateSwapchain(VK_FALSE);
     if (VK_SUCCESS != vkResult)
@@ -670,6 +615,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateSwapchain() successful\n");
     }
+
     // Swapchain Images and ImageViews
     vkResult = CreateImagesAndImageViews();
     if (VK_SUCCESS != vkResult)
@@ -681,6 +627,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateImagesAndImageViews() successful\n");
     }
+
     // Create Command Pool
     vkResult = CreateCommandPool();
     if (VK_SUCCESS != vkResult)
@@ -692,6 +639,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateCommandPool() successful\n");
     }
+
     // Create Command Buffers
     vkResult = CreateCommandBuffers();
     if (VK_SUCCESS != vkResult)
@@ -703,6 +651,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateCommandBuffers() successful\n");
     }
+
     // Create RenderPass
     vkResult = CreateRenderPass();
     if (VK_SUCCESS != vkResult)
@@ -714,6 +663,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateRenderPass() successful\n");
     }
+
     // Create Frame Buffer
     vkResult = CreateFrameBuffers();
     if (VK_SUCCESS != vkResult)
@@ -725,6 +675,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateFrameBuffers() successful\n");
     }
+
     // Create Semaphores
     vkResult = CreateSemaphores();
     if (VK_SUCCESS != vkResult)
@@ -736,6 +687,7 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateSemaphores() successful\n");
     }
+
     // Create Semaphores
     vkResult = CreateFences();
     if (VK_SUCCESS != vkResult)
@@ -747,6 +699,15 @@ VkResult initialize(void)
     {
         fprintf(gpLogFile, "Initialize()    =>  CreateFences() successful\n");
     }
+
+    memset((void *)&vkClearColorValue, 0, sizeof(VkClearColorValue));
+
+    // FINALLY GIVING BLUE COLOR - Analogous to glClearColor;
+    vkClearColorValue.float32[0] = 0.0f;
+    vkClearColorValue.float32[1] = 0.0f;
+    vkClearColorValue.float32[2] = 1.0f;
+    vkClearColorValue.float32[3] = 1.0f;
+
     // Build Command Buffers
     vkResult = BuildCommandBuffers();
     if (VK_SUCCESS != vkResult)
@@ -759,16 +720,8 @@ VkResult initialize(void)
         fprintf(gpLogFile, "Initialize()    =>  BuildCommandBuffers() successful\n");
     }
 
-    memset((void *)&vkClearColorValue, 0, sizeof(VkClearColorValue));
-
-    // FINALLY GIVING BLUE COLOR - Analogous to glClearColor;
-    vkClearColorValue.float32[0] = 0.0f;
-    vkClearColorValue.float32[1] = 0.0f;
-    vkClearColorValue.float32[2] = 1.0f;
-    vkClearColorValue.float32[3] = 1.0f;
-
     // Initialization is Completed
-    bInitialized = True;
+    bInitialize = TRUE;
 
     fprintf(gpLogFile, "Initialize()    -->  function completed\n");
     return (vkResult);
@@ -1068,122 +1021,6 @@ void uninitialize(void)
                                         VULKAN RELATED FUNCTIONS
 \*****************************************************************************************************************************/
 
-//  STEP 03
-VkResult CreateVulkanInstance(void)
-{
-    // Function Declaration
-    VkResult FillInstanceExtensionNames(void);
-    VkResult FillValidationLayerNames(void);
-    VkResult CreateValidationCallbackFunction(void);
-
-    // Variable Declaration
-    VkResult vkResult = VK_SUCCESS;
-    VkApplicationInfo vkApplicationInfo;
-    VkInstanceCreateInfo vkInstanceCreateInfo;
-
-    // Code
-    fprintf(gpLogFile, "CreateVulkanInstance()    >>>  function started\n");
-
-    memset((void *)&vkApplicationInfo, 0, sizeof(VkApplicationInfo));
-    memset((void *)&vkInstanceCreateInfo, 0, sizeof(VkInstanceCreateInfo));
-
-    // Step 01 Fill and Initialize required extension names & count global variables
-    vkResult = FillInstanceExtensionNames();
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateVulkanInstance()   =>  FillInstanceExtensionNames() failed\n");
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateVulkanInstance()   =>  FillInstanceExtensionNames() successful\n");
-    }
-
-    // Fill Validation Layer
-    if (True == bValidation)
-    {
-        vkResult = FillValidationLayerNames();
-        if (VK_SUCCESS != vkResult)
-        {
-            fprintf(gpLogFile, "CreateVulkanInstance()   =>  FillValidationLayerNames() failed\n");
-            return (vkResult);
-        }
-        else
-        {
-            fprintf(gpLogFile, "CreateVulkanInstance()   =>  FillValidationLayerNames() successful\n");
-        }
-    }
-
-    // Step 02 Initialize struct VkApplicationInfo
-    vkApplicationInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-    vkApplicationInfo.pNext = NULL;
-    vkApplicationInfo.pApplicationName = gpszAppName;
-    vkApplicationInfo.applicationVersion = 1;
-    vkApplicationInfo.pEngineName = gpszAppName;
-    vkApplicationInfo.engineVersion = 1;
-    vkApplicationInfo.apiVersion = VK_API_VERSION_1_4;
-
-    // Step 03  Initialize struct VkInstanceCreateInfo by using information from Step 01 and Step 02
-
-    vkInstanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-    vkInstanceCreateInfo.pNext = NULL;
-    vkInstanceCreateInfo.pApplicationInfo = &vkApplicationInfo;
-    vkInstanceCreateInfo.enabledExtensionCount = enabledInstanceExtensionCount;
-    vkInstanceCreateInfo.ppEnabledExtensionNames = enabledInstanceExtensionNames_array;
-
-    if (True == bValidation)
-    {
-        vkInstanceCreateInfo.enabledLayerCount = enabledValidationLayerCount;
-        vkInstanceCreateInfo.ppEnabledLayerNames = enabledValidationLayerName_array;
-    }
-    else
-    {
-        vkInstanceCreateInfo.enabledLayerCount = 0;
-        vkInstanceCreateInfo.ppEnabledLayerNames = NULL;
-    }
-
-    // Step 04: Call vkCreateInstance() to get VkInstance in global variable & do error checking
-    vkResult = vkCreateInstance(&vkInstanceCreateInfo, NULL, &vkInstance);
-    if (VK_ERROR_INCOMPATIBLE_DRIVER == vkResult)
-    {
-        fprintf(gpLogFile, "CreateVulkanInstance()   =>  vkCreateInstance() failed due to -> incompatible driver(%d)\n", vkResult);
-        return (vkResult);
-    }
-    else if (VK_ERROR_EXTENSION_NOT_PRESENT == vkResult)
-    {
-        fprintf(gpLogFile, "CreateVulkanInstance()   =>  vkCreateInstance() failed due to -> extension not present(%d)\n", vkResult);
-        return (vkResult);
-    }
-    else if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateVulkanInstance()   =>  vkCreateInstance() failed due to -> unknown reason(%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateVulkanInstance()   =>  vkCreateInstance() successful\n");
-    }
-
-    // DO FOR VALIDATION CALLBACKS
-    if (True == bValidation)
-    {
-        vkResult = CreateValidationCallbackFunction();
-        if (VK_SUCCESS != vkResult)
-        {
-            fprintf(gpLogFile, "CreateVulkanInstance()   =>  CreateValidationCallbackFunction() failed\n");
-            return (vkResult);
-        }
-        else
-        {
-            fprintf(gpLogFile, "CreateVulkanInstance()   =>  CreateValidationCallbackFunction() successful\n");
-        }
-    }
-
-    fprintf(gpLogFile, "CreateVulkanInstance()    -->  function completed\n");
-
-    return (vkResult);
-}
-
 // STEP 02
 VkResult FillInstanceExtensionNames(void)
 {
@@ -1193,8 +1030,7 @@ VkResult FillInstanceExtensionNames(void)
     VkExtensionProperties *vkExtensionProperties_array = NULL;
     char **instanceExtensionNames_array = NULL;
     VkBool32 vulkanSurfaceExtensionFound = VK_FALSE;
-    VkBool32 xlibSurfaceExtensionFound = VK_FALSE;
-    VkBool32 debugReportExtensionFound = VK_FALSE;
+    VkBool32 win32SurfaceExtensionFound = VK_FALSE;
 
     // Code
     fprintf(gpLogFile, "FillInstanceExtensionNames()  >>>  function started\n");
@@ -1269,32 +1105,16 @@ VkResult FillInstanceExtensionNames(void)
     //  Step 05: Find whether above extension names contained our required 2 extensions viz, VK_KHR_SURFACE_EXTENSION_NAME & VK_KHR_WIN32_SURFACE_EXTENSION_NAME
     for (uint32_t le = 0; le < instanceExtensionCount; ++le)
     {
-        // VK_KHR_SURFACE_EXTENSION_NAME
         if (0 == strcmp(instanceExtensionNames_array[le], VK_KHR_SURFACE_EXTENSION_NAME))
         {
             vulkanSurfaceExtensionFound = VK_TRUE;
             enabledInstanceExtensionNames_array[enabledInstanceExtensionCount++] = VK_KHR_SURFACE_EXTENSION_NAME;
         }
 
-        // VK_KHR_WIN32_SURFACE_EXTENSION_NAME
-        if (0 == strcmp(instanceExtensionNames_array[le], VK_KHR_XLIB_SURFACE_EXTENSION_NAME))
+        if (0 == strcmp(instanceExtensionNames_array[le], VK_KHR_WIN32_SURFACE_EXTENSION_NAME))
         {
-            xlibSurfaceExtensionFound = VK_TRUE;
-            enabledInstanceExtensionNames_array[enabledInstanceExtensionCount++] = VK_KHR_XLIB_SURFACE_EXTENSION_NAME;
-        }
-
-        // VK_EXT_DEBUG_REPORT_EXTENSION_NAME
-        if (0 == strcmp(instanceExtensionNames_array[le], VK_EXT_DEBUG_REPORT_EXTENSION_NAME))
-        {
-            debugReportExtensionFound = VK_TRUE;
-            if (True == bValidation)
-            {
-                enabledInstanceExtensionNames_array[enabledInstanceExtensionCount++] = VK_EXT_DEBUG_REPORT_EXTENSION_NAME;
-            }
-            else
-            {
-                // Array will not have entry of VK_EXT_DEBUG_REPORT_EXTENSION_NAME
-            }
+            win32SurfaceExtensionFound = VK_TRUE;
+            enabledInstanceExtensionNames_array[enabledInstanceExtensionCount++] = VK_KHR_WIN32_SURFACE_EXTENSION_NAME;
         }
     }
 
@@ -1321,40 +1141,15 @@ VkResult FillInstanceExtensionNames(void)
         fprintf(gpLogFile, "FillInstanceExtensionNames()    =>  VK_KHR_SURFACE_EXTENSION_NAME found successfully\n");
     }
 
-    if (VK_FALSE == xlibSurfaceExtensionFound)
+    if (VK_FALSE == win32SurfaceExtensionFound)
     {
         vkResult = VK_ERROR_INITIALIZATION_FAILED; //  Return hardcoded failure
-        fprintf(gpLogFile, "FillInstanceExtensionNames()    =>  VK_KHR_XLIB_SURFACE_EXTENSION_NAME not found\n");
+        fprintf(gpLogFile, "FillInstanceExtensionNames()    =>  VK_KHR_WIN32_SURFACE_EXTENSION_NAME not found\n");
         return (vkResult);
     }
     else
     {
-        fprintf(gpLogFile, "FillInstanceExtensionNames()    =>  VK_KHR_XLIB_SURFACE_EXTENSION_NAME found successfully\n");
-    }
-
-    if (VK_FALSE == debugReportExtensionFound)
-    {
-        if (True == bValidation)
-        {
-            vkResult = VK_ERROR_INITIALIZATION_FAILED; //  Return hardcoded failure
-            fprintf(gpLogFile, "FillInstanceExtensionNames()    ||>  validation is on but VK_EXT_DEBUG_REPORT_EXTENSION_NAME not found\n");
-            return (vkResult);
-        }
-        else
-        {
-            fprintf(gpLogFile, "FillInstanceExtensionNames()    ||>  vailidation is off and VK_EXT_DEBUG_REPORT_EXTENSION_NAME not found\n");
-        }
-    }
-    else
-    {
-        if (True == bValidation)
-        {
-            fprintf(gpLogFile, "FillInstanceExtensionNames()    ||>  validation is on and VK_EXT_DEBUG_REPORT_EXTENSION_NAME found successfully\n");
-        }
-        else
-        {
-            fprintf(gpLogFile, "FillInstanceExtensionNames()    ||>  validation is off and VK_EXT_DEBUG_REPORT_EXTENSION_NAME found successfully\n");
-        }
+        fprintf(gpLogFile, "FillInstanceExtensionNames()    =>  VK_KHR_WIN32_SURFACE_EXTENSION_NAME found successfully\n");
     }
 
     //  Step 08: Print only enabled extension names
@@ -1368,181 +1163,76 @@ VkResult FillInstanceExtensionNames(void)
     return (vkResult);
 }
 
-VkResult FillValidationLayerNames(void)
-{
-    //  Variable Definition
-    VkResult vkResult = VK_SUCCESS;
-    uint32_t validationLayerCount = 0;
-    VkLayerProperties *vkLayerProperties_array = NULL;
-    char **validationLayerNames_array = NULL;
-    VkBool32 validationLayerFound = VK_FALSE;
-
-    // Code
-    fprintf(gpLogFile, "FillValidationLayerNames()    >>>  function started\n");
-
-    vkResult = vkEnumerateInstanceLayerProperties(&validationLayerCount, NULL);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "FillValidationLayerNames()   =>  vkEnumerateInstanceLayerProperties() failed - first call\n");
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "FillValidationLayerNames()   =>  vkEnumerateInstanceLayerProperties() successful - first call\n");
-    }
-
-    vkLayerProperties_array = (VkLayerProperties *)malloc(sizeof(VkLayerProperties) * validationLayerCount);
-    // FOR THE SAKE OF BREVITY
-
-    vkResult = vkEnumerateInstanceLayerProperties(&validationLayerCount, vkLayerProperties_array);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "FillValidationLayerNames()   =>  vkEnumerateInstanceLayerProperties() failed - second call\n");
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "FillValidationLayerNames()   =>  vkEnumerateInstanceLayerProperties() successful - second call\n");
-    }
-
-    validationLayerNames_array = (char **)malloc(sizeof(char *) * validationLayerCount);
-    //  FOR THE SAKE OF BREVITY WE AVOID ERROR CHECKIG BUT HERE THERE SHOULD BE ERROR CHECKING FOR MALLOC
-    if (NULL == validationLayerNames_array)
-    {
-        fprintf(gpLogFile, "FillValidationLayerNames()   =>  Out of memory while allocating validationLayerNames_array\n");
-        return (VK_ERROR_OUT_OF_HOST_MEMORY);
-    }
-
-    //  Allocate memory for each string member
-    for (uint32_t le = 0; le < validationLayerCount; ++le)
-    {
-        validationLayerNames_array[le] = (char *)malloc(sizeof(char) * (strlen(vkLayerProperties_array[le].layerName) + 1));
-        //  FOR THE SAKE OF BREVITY WE AVOID ERROR CHECKIG BUT HERE THERE SHOULD BE ERROR CHECKING FOR MALLOC
-        if (NULL == validationLayerNames_array[le])
-        {
-            fprintf(gpLogFile, "FillValidationLayerNames()   =>  Out of memory while allocating validationLayerNames_array[%d]\n", le);
-            return (VK_ERROR_OUT_OF_HOST_MEMORY);
-        }
-
-        memcpy(validationLayerNames_array[le], vkLayerProperties_array[le].layerName, strlen(vkLayerProperties_array[le].layerName) + 1);
-
-        fprintf(gpLogFile, "FillValidationLayerNames()    =>  vulkan instance layer name = %s\n", validationLayerNames_array[le]);
-    }
-
-    if (vkLayerProperties_array)
-    {
-        free(vkLayerProperties_array);
-        vkLayerProperties_array = NULL;
-    }
-
-    for (uint32_t le = 0; le < validationLayerCount; ++le)
-    {
-        if (0 == strcmp(validationLayerNames_array[le], "VK_LAYER_KHRONOS_validation"))
-        {
-            validationLayerFound = VK_TRUE;
-            enabledValidationLayerName_array[enabledValidationLayerCount++] = "VK_LAYER_KHRONOS_validation";
-        }
-    }
-
-    for (uint32_t le = 0; le < validationLayerCount; ++le)
-    {
-        free(validationLayerNames_array[le]);
-        validationLayerNames_array[le] = NULL;
-    }
-    //  Free the array
-    free(validationLayerNames_array);
-    validationLayerNames_array = NULL;
-
-    if (VK_FALSE == validationLayerFound)
-    {
-        vkResult = VK_ERROR_INITIALIZATION_FAILED; //  Return hardcoded failure
-        fprintf(gpLogFile, "FillValidationLayerNames()    =>  VK_LAYER_KHRONOS_validation not found\n");
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "FillValidationLayerNames()    =>  VK_LAYER_KHRONOS_validation found successfully\n");
-    }
-
-    if (True == bValidation)
-    {
-        for (uint32_t le = 0; le < enabledValidationLayerCount; ++le)
-        {
-            fprintf(gpLogFile, "FillValidationLayerNames()    ||>  Enabled vulkan instance layer name = %s\n", enabledValidationLayerName_array[le]);
-        }
-    }
-
-    fprintf(gpLogFile, "FillValidationLayerNames()    -->  function completed\n");
-    return (vkResult);
-}
-
-VkResult CreateValidationCallbackFunction(void)
+//  STEP 03
+VkResult CreateVulkanInstance(void)
 {
     // Function Declaration
-    // Callback Function
-    VKAPI_ATTR VkBool32 VKAPI_CALL DebugReportCallback(VkDebugReportFlagsEXT,
-                                                       VkDebugReportObjectTypeEXT,
-                                                       uint64_t,
-                                                       size_t,
-                                                       int32_t,
-                                                       const char *,
-                                                       const char *,
-                                                       void *);
+    VkResult FillInstanceExtensionNames(void);
 
-    //  Variable Definition
+    // Variable Declaration
     VkResult vkResult = VK_SUCCESS;
-    PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT_fnptr = NULL;
-    VkDebugReportCallbackCreateInfoEXT vkDebugReportCallbackCreateInfoEXT;
+    VkApplicationInfo vkApplicationInfo;
+    VkInstanceCreateInfo vkInstanceCreateInfo;
 
     // Code
-    fprintf(gpLogFile, "CreateValidationCallbackFunction()    >>>  function started\n");
+    fprintf(gpLogFile, "CreateVulkanInstance()    >>>  function started\n");
 
-    // Get the required function pointers
-    vkCreateDebugReportCallbackEXT_fnptr = (PFN_vkCreateDebugReportCallbackEXT)vkGetInstanceProcAddr(vkInstance, "vkCreateDebugReportCallbackEXT");
-    if (NULL == vkCreateDebugReportCallbackEXT_fnptr)
-    {
-        vkResult = VK_ERROR_INITIALIZATION_FAILED;
-        fprintf(gpLogFile, "CreateValidationCallbackFunction()    ==>  vkGetInstanceProcAddr() failed to get function pointer for vkCreateDebugReportCallbackEXT\n");
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateValidationCallbackFunction()    ==>  vkGetInstanceProcAddr() successful to get function pointer for vkCreateDebugReportCallbackEXT\n");
-    }
+    memset((void *)&vkApplicationInfo, 0, sizeof(VkApplicationInfo));
+    memset((void *)&vkInstanceCreateInfo, 0, sizeof(VkInstanceCreateInfo));
 
-    vkDestroyDebugReportCallbackEXT_fnptr = (PFN_vkDestroyDebugReportCallbackEXT)vkGetInstanceProcAddr(vkInstance, "vkDestroyDebugReportCallbackEXT");
-    if (NULL == vkDestroyDebugReportCallbackEXT_fnptr)
-    {
-        vkResult = VK_ERROR_INITIALIZATION_FAILED;
-        fprintf(gpLogFile, "CreateValidationCallbackFunction()    ==>  vkGetInstanceProcAddr() failed to get function pointer for vkDestroyDebugReportCallbackEXT\n");
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateValidationCallbackFunction()    ==>  vkGetInstanceProcAddr() successful to get function pointer for vkDestroyDebugReportCallbackEXT\n");
-    }
-
-    // Get the Vulkan Debug Report callback object
-    memset((void *)&vkDebugReportCallbackCreateInfoEXT, 0, sizeof(VkDebugReportCallbackCreateInfoEXT));
-
-    vkDebugReportCallbackCreateInfoEXT.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT;
-    vkDebugReportCallbackCreateInfoEXT.pNext = NULL;
-    vkDebugReportCallbackCreateInfoEXT.flags = VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT;
-    vkDebugReportCallbackCreateInfoEXT.pfnCallback = DebugReportCallback;
-    vkDebugReportCallbackCreateInfoEXT.pUserData = NULL;
-
-    vkResult = vkCreateDebugReportCallbackEXT_fnptr(vkInstance, &vkDebugReportCallbackCreateInfoEXT, NULL, &vkDebugReportCallbackEXT);
+    // Step 01 Fill and Initialize required extension names & count global variables
+    vkResult = FillInstanceExtensionNames();
     if (VK_SUCCESS != vkResult)
     {
-        fprintf(gpLogFile, "CreateValidationCallbackFunction()   =>  vkCreateDebugReportCallbackEXT_fnptr() failed\n");
+        fprintf(gpLogFile, "CreateVulkanInstance()   =>  FillInstanceExtensionNames() failed\n");
         return (vkResult);
     }
     else
     {
-        fprintf(gpLogFile, "CreateValidationCallbackFunction()   =>  vkCreateDebugReportCallbackEXT_fnptr() successful\n");
+        fprintf(gpLogFile, "CreateVulkanInstance()   =>  FillInstanceExtensionNames() successful\n");
     }
 
-    fprintf(gpLogFile, "CreateValidationCallbackFunction()    -->  function completed\n");
+    // Step 02 Initialize struct VkApplicationInfo
+    vkApplicationInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+    vkApplicationInfo.pNext = NULL;
+    vkApplicationInfo.pApplicationName = gpszAppName;
+    vkApplicationInfo.applicationVersion = 1;
+    vkApplicationInfo.pEngineName = gpszAppName;
+    vkApplicationInfo.engineVersion = 1;
+    vkApplicationInfo.apiVersion = VK_API_VERSION_1_4;
+
+    // Step 03  Initialize struct VkInstanceCreateInfo by using information from Step 01 and Step 02
+
+    vkInstanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    vkInstanceCreateInfo.pNext = NULL;
+    vkInstanceCreateInfo.pApplicationInfo = &vkApplicationInfo;
+    vkInstanceCreateInfo.enabledExtensionCount = enabledInstanceExtensionCount;
+    vkInstanceCreateInfo.ppEnabledExtensionNames = enabledInstanceExtensionNames_array;
+
+    // Step 04: Call vkCreateInstance() to get VkInstance in global variable & do error checking
+    vkResult = vkCreateInstance(&vkInstanceCreateInfo, NULL, &vkInstance);
+    if (VK_ERROR_INCOMPATIBLE_DRIVER == vkResult)
+    {
+        fprintf(gpLogFile, "CreateVulkanInstance()   =>  vkCreateInstance() failed due to -> incompatible driver(%d)\n", vkResult);
+        return (vkResult);
+    }
+    else if (VK_ERROR_EXTENSION_NOT_PRESENT == vkResult)
+    {
+        fprintf(gpLogFile, "CreateVulkanInstance()   =>  vkCreateInstance() failed due to -> extension not present(%d)\n", vkResult);
+        return (vkResult);
+    }
+    else if (VK_SUCCESS != vkResult)
+    {
+        fprintf(gpLogFile, "CreateVulkanInstance()   =>  vkCreateInstance() failed due to -> unknown reason(%d)\n", vkResult);
+        return (vkResult);
+    }
+    else
+    {
+        fprintf(gpLogFile, "CreateVulkanInstance()   =>  vkCreateInstance() successful\n");
+    }
+
+    fprintf(gpLogFile, "CreateVulkanInstance()    -->  function completed\n");
+
     return (vkResult);
 }
 
@@ -1551,28 +1241,28 @@ VkResult GetSupportedSurface(void)
 {
     // Variable Definition
     VkResult vkResult = VK_SUCCESS;
-    VkXlibSurfaceCreateInfoKHR vkXlibSurfaceCreateInfoKHR;
+    VkWin32SurfaceCreateInfoKHR vkWin32SurfaceCreateInfoKHR;
 
     // Code
     fprintf(gpLogFile, "GetSupportedSurface()    >>>  function started\n");
 
-    memset((void *)&vkXlibSurfaceCreateInfoKHR, 0, sizeof(VkXlibSurfaceCreateInfoKHR));
+    memset((void *)&vkWin32SurfaceCreateInfoKHR, 0, sizeof(VkWin32SurfaceCreateInfoKHR));
 
-    vkXlibSurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
-    vkXlibSurfaceCreateInfoKHR.pNext = NULL;
-    vkXlibSurfaceCreateInfoKHR.flags = 0;
-    vkXlibSurfaceCreateInfoKHR.dpy = gpDisplay; // Display pointer from X
-    vkXlibSurfaceCreateInfoKHR.window = gWindow; // Window handle from X
+    vkWin32SurfaceCreateInfoKHR.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+    vkWin32SurfaceCreateInfoKHR.pNext = NULL;
+    vkWin32SurfaceCreateInfoKHR.flags = 0;
+    vkWin32SurfaceCreateInfoKHR.hinstance = (HINSTANCE)GetWindowLongPtr(ghwnd, GWLP_HINSTANCE);
+    vkWin32SurfaceCreateInfoKHR.hwnd = ghwnd;
 
-    vkResult = vkCreateXlibSurfaceKHR(vkInstance, &vkXlibSurfaceCreateInfoKHR, NULL, &vkSurfaceKHR);
+    vkResult = vkCreateWin32SurfaceKHR(vkInstance, &vkWin32SurfaceCreateInfoKHR, NULL, &vkSurfaceKHR);
     if (VK_SUCCESS != vkResult)
     {
-        fprintf(gpLogFile, "GetSupportedSurface()   =>  vkCreateXlibSurfaceKHR() failed\n");
+        fprintf(gpLogFile, "GetSupportedSurface()   =>  vkCreateWin32SurfaceKHR() failed\n");
         return (vkResult);
     }
     else
     {
-        fprintf(gpLogFile, "GetSupportedSurface()   =>  vkCreateXlibSurfaceKHR() successful\n");
+        fprintf(gpLogFile, "GetSupportedSurface()   =>  vkCreateWin32SurfaceKHR() successful\n");
     }
 
     fprintf(gpLogFile, "GetSupportedSurface()    -->  function completed\n");
@@ -1663,6 +1353,7 @@ VkResult GetPhysicalDevice(void)
             return (VK_ERROR_OUT_OF_HOST_MEMORY);
         }
 
+
         // SubStep f: Start a nested loop & fill above VkBool32 type array by calling vkGetPhysicalDeviceSurfaceSupportKHR()
         for (uint32_t ile = 0; ile < queueCount; ++ile)
         {
@@ -1735,7 +1426,7 @@ VkResult GetPhysicalDevice(void)
     memset((void *)&vkPhysicalDeviceFeatures, 0, sizeof(VkPhysicalDeviceFeatures));
     vkGetPhysicalDeviceFeatures(vkPhysicalDevice_selected, &vkPhysicalDeviceFeatures);
 
-    // Step 10: By using tessellationShader member of above structure, check ifselected devices supportsd TessellationShader
+    // Step 10: By using tessellationShader member of above structure, check if selected devices supportsd TessellationShader
     if (vkPhysicalDeviceFeatures.tessellationShader)
     {
         fprintf(gpLogFile, "GetPhysicalDevice() =>  selected physical device support Tessellation Shader\n");
@@ -1745,7 +1436,7 @@ VkResult GetPhysicalDevice(void)
         fprintf(gpLogFile, "GetPhysicalDevice() =>  selected physical device does not support Tessellation Shader\n");
     }
 
-    // Step 11: By using geometryShader member of above structure, check ifselected devices supportsd GeometryShader;
+    // Step 11: By using geometryShader member of above structure, check if selected devices supportsd GeometryShader;
     if (vkPhysicalDeviceFeatures.geometryShader)
     {
         fprintf(gpLogFile, "GetPhysicalDevice() =>  selected physical device support Geometry Shader\n");
@@ -1767,11 +1458,11 @@ VkResult PrintVkInfo(void)
     // Code
     fprintf(gpLogFile, "PrintVkInfo()    >>>  function started\n");
 
-    fprintf(gpLogFile, "\n");
+    NEWLINEINFILE;
     fprintf(gpLogFile, "**************************************************************************\n");
     fprintf(gpLogFile, "                     Vulkan Info\n");
     fprintf(gpLogFile, "**************************************************************************\n");
-    fprintf(gpLogFile, "\n");
+    NEWLINEINFILE;
 
     for (uint32_t le = 0; le < physicalDeviceCount; ++le)
     {
@@ -1826,9 +1517,7 @@ VkResult PrintVkInfo(void)
         fprintf(gpLogFile, "Device ID = 0x%04X\n", vkPhysicalDeviceProperties.deviceID);
     }
 
-    fprintf(gpLogFile, "\n");
-    fprintf(gpLogFile, "**************************************************************************\n");
-    fprintf(gpLogFile, "\n");
+    NEWLINEINFILE;
 
     // Free Physical Device
     if (vkPhysicalDevice_array)
@@ -2290,7 +1979,7 @@ VkResult CreateSwapchain(VkBool32 vSync)
     }
     else
     {
-        // ifsurface size is already defined then swapchain image size must match withit
+        // if surface size is already defined then swapchain image size must match withit
         VkExtent2D vkExtent2D;
 
         memset((void *)&vkExtent2D, 0, sizeof(vkExtent2D));
@@ -2302,17 +1991,17 @@ VkResult CreateSwapchain(VkBool32 vSync)
         fprintf(gpLogFile, "CreateSwapchain()    =>  vkSurfaceCapabilitiesKHR.minImageExtent.width %d\n", vkSurfaceCapabilitiesKHR.minImageExtent.width);
         fprintf(gpLogFile, "CreateSwapchain()    =>  vkSurfaceCapabilitiesKHR.maxImageExtent.width %d\n", vkSurfaceCapabilitiesKHR.maxImageExtent.width);
         fprintf(gpLogFile, "CreateSwapchain()    =>  vkExtent2D.width %d\n", vkExtent2D.width);
-        fprintf(gpLogFile, "CreateSwapchain()    =>  selected width = %d\n", glm::max(vkSurfaceCapabilitiesKHR.minImageExtent.width, glm::min(vkSurfaceCapabilitiesKHR.maxImageExtent.width, vkExtent2D.width)));
+        fprintf(gpLogFile, "CreateSwapchain()    =>  selected width = %d\n", max(vkSurfaceCapabilitiesKHR.minImageExtent.width, min(vkSurfaceCapabilitiesKHR.maxImageExtent.width, vkExtent2D.width)));
 
-        vkExtent2D_swapchain.width = glm::max(vkSurfaceCapabilitiesKHR.minImageExtent.width, glm::min(vkSurfaceCapabilitiesKHR.maxImageExtent.width, vkExtent2D.width));
+        vkExtent2D_swapchain.width = max(vkSurfaceCapabilitiesKHR.minImageExtent.width, min(vkSurfaceCapabilitiesKHR.maxImageExtent.width, vkExtent2D.width));
 
         // FOR MY LOGGING
         fprintf(gpLogFile, "CreateSwapchain()    =>  vkSurfaceCapabilitiesKHR.minImageExtent.height %d\n", vkSurfaceCapabilitiesKHR.minImageExtent.height);
         fprintf(gpLogFile, "CreateSwapchain()    =>  vkSurfaceCapabilitiesKHR.maxImageExtent.height %d\n", vkSurfaceCapabilitiesKHR.maxImageExtent.height);
         fprintf(gpLogFile, "CreateSwapchain()    =>  vkExtent2D.height %d\n", vkExtent2D.height);
-        fprintf(gpLogFile, "CreateSwapchain()    =>  selected height = %d\n", glm::max(vkSurfaceCapabilitiesKHR.minImageExtent.height, glm::min(vkSurfaceCapabilitiesKHR.maxImageExtent.height, vkExtent2D.height)));
+        fprintf(gpLogFile, "CreateSwapchain()    =>  selected height = %d\n", max(vkSurfaceCapabilitiesKHR.minImageExtent.height, min(vkSurfaceCapabilitiesKHR.maxImageExtent.height, vkExtent2D.height)));
 
-        vkExtent2D_swapchain.height = glm::max(vkSurfaceCapabilitiesKHR.minImageExtent.height, glm::min(vkSurfaceCapabilitiesKHR.maxImageExtent.height, vkExtent2D.height));
+        vkExtent2D_swapchain.height = max(vkSurfaceCapabilitiesKHR.minImageExtent.height, min(vkSurfaceCapabilitiesKHR.maxImageExtent.height, vkExtent2D.height));
     }
 
     // Set swapchain image usage flag
@@ -2325,7 +2014,7 @@ VkResult CreateSwapchain(VkBool32 vSync)
     {
         vkSurfaceTransformFlagBitsKHR = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
         // FOR MY LOGGING
-        fprintf(gpLogFile, "CreateSwapchain()    =>  in ifvkSurfaceTransformFlagBitsKHR = %d\n", vkSurfaceTransformFlagBitsKHR);
+        fprintf(gpLogFile, "CreateSwapchain()    =>  in if vkSurfaceTransformFlagBitsKHR = %d\n", vkSurfaceTransformFlagBitsKHR);
     }
     else
     {
@@ -2546,609 +2235,6 @@ VkResult CreateCommandBuffers(void)
     return (vkResult);
 }
 
-VkResult CreateVertexBuffer(void)
-{
-    // Variable Definition
-    VkResult vkResult = VK_SUCCESS;
-    float triangle_position[] = {0.0f, 1.0f, 0.0f,   // Top Vertex
-                                 -1.0f, -1.0f, 0.0f, // Bottom Left Vertex
-                                 1.0f, -1.0f, 0.0f}; // Bottom Right Vertex
-
-    VkBufferCreateInfo vkBufferCreateInfo;
-    VkMemoryRequirements vkMemoryRequirements;
-    VkMemoryAllocateInfo vkMemoryAllocateInfo;
-    void *data = NULL;
-
-    // Code
-    fprintf(gpLogFile, "CreateVertexBuffer()  >>>  function started\n");
-
-    memset((void *)&vertexData_position, 0, sizeof(VertexData));
-    memset((void *)&vkBufferCreateInfo, 0, sizeof(VkBufferCreateInfo));
-
-    vkBufferCreateInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-    vkBufferCreateInfo.pNext = NULL;
-    vkBufferCreateInfo.flags = 0; // Valid Flags are use in scattered/sparse buffer
-    vkBufferCreateInfo.size = sizeof(triangle_position);
-    vkBufferCreateInfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
-
-    vkResult = vkCreateBuffer(vkDevice, &vkBufferCreateInfo, NULL, &vertexData_position.vkBuffer);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateVertexBuffer()    =>  vkCreateBuffer() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateVertexBuffer()    =>  vkCreateBuffer() successful \n");
-    }
-
-    memset((void *)&vkMemoryRequirements, 0, sizeof(VkMemoryRequirements));
-
-    vkGetBufferMemoryRequirements(vkDevice, vertexData_position.vkBuffer, &vkMemoryRequirements);
-
-    memset((void *)&vkMemoryAllocateInfo, 0, sizeof(VkMemoryAllocateInfo));
-
-    vkMemoryAllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
-    vkMemoryAllocateInfo.pNext = NULL;
-    vkMemoryAllocateInfo.allocationSize = vkMemoryRequirements.size;
-    vkMemoryAllocateInfo.memoryTypeIndex = 0; // Initialia value before loop
-
-    for (uint32_t le = 0; le < vkPhysicalDeviceMemoryProperties.memoryTypeCount; ++le)
-    {
-        if (1 == (vkMemoryRequirements.memoryTypeBits & 1))
-        {
-            if (vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT)
-            {
-                vkMemoryAllocateInfo.memoryTypeIndex = le;
-                break;
-            }
-        }
-
-        vkMemoryRequirements.memoryTypeBits >>= 1;
-    }
-
-    vkResult = vkAllocateMemory(vkDevice, &vkMemoryAllocateInfo, NULL, &vertexData_position.vkDeviceMemory);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateVertexBuffer()    =>  vkAllocateMemory() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateVertexBuffer()    =>  vkAllocateMemory() successful \n");
-    }
-
-    vkResult = vkBindBufferMemory(vkDevice, vertexData_position.vkBuffer, vertexData_position.vkDeviceMemory, 0);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateVertexBuffer()    =>  vkBindBufferMemory() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateVertexBuffer()    =>  vkBindBufferMemory() successful \n");
-    }
-
-    vkResult = vkMapMemory(vkDevice, vertexData_position.vkDeviceMemory, 0, vkMemoryAllocateInfo.allocationSize, 0, &data);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateVertexBuffer()    =>  vkMapMemory() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateVertexBuffer()    =>  vkMapMemory() successful \n");
-    }
-
-    memcpy(data, triangle_position, sizeof(triangle_position));
-
-    vkUnmapMemory(vkDevice, vertexData_position.vkDeviceMemory);
-
-    fprintf(gpLogFile, "CreateVertexBuffer()  -->  function completed\n");
-    return (vkResult);
-}
-
-VkResult CreateUniformBuffer(void)
-{
-    // Function Declarations
-    VkResult UpdateUniformBuffer(void);
-
-    // Variable Definition
-    VkResult vkResult = VK_SUCCESS;
-    VkBufferCreateInfo vkBufferCreateInfo;
-    VkMemoryRequirements vkMemoryRequirements;
-    VkMemoryAllocateInfo vkMemoryAllocateInfo;
-
-    // Code
-    fprintf(gpLogFile, "CreateUniformBuffer()  >>>  function started\n");
-
-    // Create Uniform Buffer
-    memset((void *)&vkBufferCreateInfo, 0, sizeof(VkBufferCreateInfo));
-
-    vkBufferCreateInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-    vkBufferCreateInfo.pNext = NULL;
-    vkBufferCreateInfo.flags = 0;
-    vkBufferCreateInfo.size = sizeof(MyUniformData);
-    vkBufferCreateInfo.usage = VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT;
-
-    memset((void *)&uniformData, 0, sizeof(UniformData));
-    vkResult = vkCreateBuffer(vkDevice, &vkBufferCreateInfo, NULL, &uniformData.vkBuffer);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateUniformBuffer()    =>  vkCreateBuffer() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateUniformBuffer()    =>  vkCreateBuffer() successful \n");
-    }
-
-    // Get Buffer Memory Requirements
-    vkGetBufferMemoryRequirements(vkDevice, uniformData.vkBuffer, &vkMemoryRequirements);
-
-    // Allocate Required Memory
-    memset((void *)&vkMemoryAllocateInfo, 0, sizeof(VkMemoryAllocateInfo));
-
-    vkMemoryAllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
-    vkMemoryAllocateInfo.pNext = NULL;
-    vkMemoryAllocateInfo.allocationSize = vkMemoryRequirements.size;
-    vkMemoryAllocateInfo.memoryTypeIndex = 0;
-
-    for (uint32_t le = 0; le < vkPhysicalDeviceMemoryProperties.memoryTypeCount; ++le)
-    {
-        if (1 == (vkMemoryRequirements.memoryTypeBits & 1))
-        {
-            if (vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT)
-            {
-                vkMemoryAllocateInfo.memoryTypeIndex = le;
-                break;
-            }
-        }
-
-        vkMemoryRequirements.memoryTypeBits >>= 1;
-    }
-
-    vkResult = vkAllocateMemory(vkDevice, &vkMemoryAllocateInfo, NULL, &uniformData.vkDeviceMemory);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateUniformBuffer()    =>  vkAllocateMemory() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateUniformBuffer()    =>  vkAllocateMemory() successful \n");
-    }
-
-    // Bind Buffer to Memory
-    vkResult = vkBindBufferMemory(vkDevice, uniformData.vkBuffer, uniformData.vkDeviceMemory, 0);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateUniformBuffer()    =>  vkBindBufferMemory() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateUniformBuffer()    =>  vkBindBufferMemory() successful \n");
-    }
-
-    // Update Uniform Buffer
-    vkResult = UpdateUniformBuffer();
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateUniformBuffer()    =>  UpdateUniformBuffer() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateUniformBuffer()    =>  UpdateUniformBuffer() successful \n");
-    }
-
-    // // Map Memory and Copy Data
-    // void *data = NULL;
-    // vkResult = vkMapMemory(vkDevice, uniformData.vkDeviceMemory, 0, sizeof(MyUniformData), 0, &data);
-    // if(VK_SUCCESS != vkResult)
-    // {
-    //     fprintf(gpLogFile, "CreateUniformBuffer()    =>  vkMapMemory() failed (%d)\n", vkResult);
-    //     return (vkResult);
-    // }
-
-    // memcpy(data, &myUniformData, sizeof(MyUniformData));
-    // vkUnmapMemory(vkDevice, uniformData.vkDeviceMemory);
-
-    fprintf(gpLogFile, "CreateUniformBuffer()  -->  function completed\n");
-    return (vkResult);
-}
-
-VkResult UpdateUniformBuffer(void)
-{
-    // Variable Definition
-    VkResult vkResult = VK_SUCCESS;
-    void *data = NULL;
-    MyUniformData myUniformData;
-    glm::mat4 modelMatrix = glm::mat4(1.0f);
-    glm::mat4 viewMatrix = glm::mat4(1.0f);
-    glm::mat4 perspectiveProjectionMatrix = glm::mat4(1.0f);
-
-    // Code
-
-    // Initialize Uniform Data
-    memset((void *)&myUniformData, 0, sizeof(MyUniformData));
-
-    modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
-
-    myUniformData.modelMatrix = modelMatrix;
-    myUniformData.viewMatrix = viewMatrix;
-
-    // Create Perspective Projection Matrix
-    perspectiveProjectionMatrix = glm::perspective(glm::radians(45.0f), (float)winWidth / (float)winHeight, 0.1f, 100.0f);
-    perspectiveProjectionMatrix[1][1] = perspectiveProjectionMatrix[1][1] * -1.0f; // Invert Y axis for Vulkan
-
-    myUniformData.projectionMatrix = perspectiveProjectionMatrix;
-
-    // Map Memory and Copy Data
-    vkResult = vkMapMemory(vkDevice, uniformData.vkDeviceMemory, 0, sizeof(MyUniformData), 0, &data);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "UpdateUniformBuffer()    =>  vkMapMemory() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-
-    memcpy(data, &myUniformData, sizeof(MyUniformData));
-
-    vkUnmapMemory(vkDevice, uniformData.vkDeviceMemory);
-
-    return (vkResult);
-}
-
-VkResult CreateShaders(void)
-{
-    // Variables Definition
-    VkResult vkResult = VK_SUCCESS;
-
-    // For Vertex Shader
-    const char *szFileName = "shader.vert.spv";
-    FILE *fp = NULL;
-    size_t size = 0;
-    char *shaderData = NULL;
-    size_t retVal = 0;
-    VkShaderModuleCreateInfo vkShaderModuleCreateInfo;
-
-    // Code
-    fprintf(gpLogFile, "CreateShaders()  >>>  function started\n");
-
-    // For Vertex Shader
-    fp = fopen(szFileName, "rb");
-    if (NULL == fp)
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  failed to open vertex shader spv file\n");
-        vkResult = VK_ERROR_INITIALIZATION_FAILED;
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  successful to open vertex shader spv file\n");
-    }
-
-    fseek(fp, 0L, SEEK_END);
-    size = ftell(fp);
-    if (0 == size)
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  size is 0 of vertex shader spv file\n");
-        vkResult = VK_ERROR_INITIALIZATION_FAILED;
-        return (vkResult);
-    }
-
-    fseek(fp, 0L, SEEK_SET);
-
-    shaderData = (char *)malloc(sizeof(char) * size);
-
-    retVal = fread(shaderData, size, 1, fp);
-    if (1 != retVal)
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  failed to read vertex shader spv file\n");
-        vkResult = VK_ERROR_INITIALIZATION_FAILED;
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  successful to read vertex shader spv file\n");
-    }
-
-    fclose(fp);
-
-    memset((void *)&vkShaderModuleCreateInfo, 0, sizeof(VkShaderModuleCreateInfo));
-
-    vkShaderModuleCreateInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
-    vkShaderModuleCreateInfo.pNext = NULL;
-    vkShaderModuleCreateInfo.flags = 0; //  RESERVED so must be 0
-    vkShaderModuleCreateInfo.codeSize = size;
-    vkShaderModuleCreateInfo.pCode = (uint32_t *)shaderData;
-
-    vkResult = vkCreateShaderModule(vkDevice, &vkShaderModuleCreateInfo, NULL, &vkShaderModule_vertex_shader);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateShaders()    =>  vkCreateShaderModule() failed for vertex shader (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateShaders()    =>  vkCreateShaderModule() successful for vertex shader \n");
-    }
-
-    if (shaderData)
-    {
-        free(shaderData);
-        shaderData = NULL;
-        fprintf(gpLogFile, "CreateShaders()    =>  vertex shader data successfully freed \n");
-    }
-
-    fprintf(gpLogFile, "CreateShaders()    =>  vertex shader module successfully created \n");
-
-    // For fragment shader
-    szFileName = "shader.frag.spv";
-
-    fp = NULL;
-    fp = fopen(szFileName, "rb");
-    if (NULL == fp)
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  failed to open fragment shader spv file\n");
-        vkResult = VK_ERROR_INITIALIZATION_FAILED;
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  successful to open fragment shader spv file\n");
-    }
-
-    fseek(fp, 0L, SEEK_END);
-    size = 0;
-    size = ftell(fp);
-    if (0 == size)
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  size is 0 of fragment shader spv file\n");
-        vkResult = VK_ERROR_INITIALIZATION_FAILED;
-        return (vkResult);
-    }
-
-    fseek(fp, 0L, SEEK_SET);
-
-    shaderData = NULL;
-    shaderData = (char *)malloc(sizeof(char) * size);
-
-    retVal = 0;
-    retVal = fread(shaderData, size, 1, fp);
-    if (1 != retVal)
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  failed to read fragment shader spv file\n");
-        vkResult = VK_ERROR_INITIALIZATION_FAILED;
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateShaders()  -->  successful to read fragment shader spv file\n");
-    }
-
-    fclose(fp);
-
-    memset((void *)&vkShaderModuleCreateInfo, 0, sizeof(VkShaderModuleCreateInfo));
-
-    vkShaderModuleCreateInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
-    vkShaderModuleCreateInfo.pNext = NULL;
-    vkShaderModuleCreateInfo.flags = 0; //  RESERVED so must be 0
-    vkShaderModuleCreateInfo.codeSize = size;
-    vkShaderModuleCreateInfo.pCode = (uint32_t *)shaderData;
-
-    vkResult = vkCreateShaderModule(vkDevice, &vkShaderModuleCreateInfo, NULL, &vkShaderModule_fragment_shader);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateShaders()    =>  vkCreateShaderModule() failed for fragment shader (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateShaders()    =>  vkCreateShaderModule() successful for fragment shader \n");
-    }
-
-    if (shaderData)
-    {
-        free(shaderData);
-        shaderData = NULL;
-        fprintf(gpLogFile, "CreateShaders()    =>  fragment shader data successfully freed \n");
-    }
-
-    fprintf(gpLogFile, "CreateShaders()    =>  fragment shader module successfully created \n");
-
-    fprintf(gpLogFile, "CreateShaders()  -->  function completed\n");
-    return (vkResult);
-}
-
-VkResult CreateDescriptorSetLayout(void)
-{
-    // Variable Definition
-    VkResult vkResult = VK_SUCCESS;
-    VkDescriptorSetLayoutCreateInfo vkDescriptorSetLayoutCreateInfo;
-
-    // Initialize Descriptor Set Binding
-    VkDescriptorSetLayoutBinding vkDescriptorSetLayoutBinding;
-
-    // Code
-    fprintf(gpLogFile, "CreateDescriptorSetLayout()  >>>  function started\n");
-
-    memset((void *)&vkDescriptorSetLayoutBinding, 0, sizeof(VkDescriptorSetLayoutBinding));
-
-    vkDescriptorSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER; //  This is the type of descriptor we are going to use
-    vkDescriptorSetLayoutBinding.binding = 0;                                        //  This is actually the 0 binding point of shader
-    vkDescriptorSetLayoutBinding.descriptorCount = 1;
-    vkDescriptorSetLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
-    vkDescriptorSetLayoutBinding.pImmutableSamplers = NULL;
-
-    memset((void *)&vkDescriptorSetLayoutCreateInfo, 0, sizeof(VkDescriptorSetLayoutCreateInfo));
-
-    vkDescriptorSetLayoutCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
-    vkDescriptorSetLayoutCreateInfo.pNext = NULL;
-    vkDescriptorSetLayoutCreateInfo.flags = 0; // RESERVED
-    vkDescriptorSetLayoutCreateInfo.bindingCount = 1;
-    vkDescriptorSetLayoutCreateInfo.pBindings = &vkDescriptorSetLayoutBinding;
-
-    vkResult = vkCreateDescriptorSetLayout(vkDevice, &vkDescriptorSetLayoutCreateInfo, NULL, &vkDescriptorSetLayout);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateDescriptorSetLayout()    =>  vkCreateDescriptorSetLayout() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateDescriptorSetLayout()    =>  vkCreateDescriptorSetLayout() successful \n");
-    }
-
-    fprintf(gpLogFile, "CreateDescriptorSetLayout()  -->  function completed\n");
-    return (vkResult);
-}
-
-VkResult CreatePipelineLayout(void)
-{
-    // Variable Definition
-    VkResult vkResult = VK_SUCCESS;
-    VkPipelineLayoutCreateInfo vkPipelineLayoutCreateInfo;
-
-    // Code
-    fprintf(gpLogFile, "CreatePipelineLayout()  >>>  function started\n");
-
-    memset((void *)&vkPipelineLayoutCreateInfo, 0, sizeof(VkPipelineLayoutCreateInfo));
-
-    vkPipelineLayoutCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-    vkPipelineLayoutCreateInfo.pNext = NULL;
-    vkPipelineLayoutCreateInfo.flags = 0;
-    vkPipelineLayoutCreateInfo.setLayoutCount = 1;
-    vkPipelineLayoutCreateInfo.pSetLayouts = &vkDescriptorSetLayout;
-    vkPipelineLayoutCreateInfo.pushConstantRangeCount = 0;
-    vkPipelineLayoutCreateInfo.pPushConstantRanges = NULL;
-
-    vkResult = vkCreatePipelineLayout(vkDevice, &vkPipelineLayoutCreateInfo, NULL, &vkPipelineLayout);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreatePipelineLayout()    =>  vkCreatePipelineLayout() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreatePipelineLayout()    =>  vkCreatePipelineLayout() successful \n");
-    }
-
-    fprintf(gpLogFile, "CreatePipelineLayout()  -->  function completed\n");
-    return (vkResult);
-}
-
-VkResult CreateDescriptorPool(void)
-{
-    // Variable Definition
-    VkResult vkResult = VK_SUCCESS;
-    VkDescriptorPoolSize vkDescriptorPoolSize;
-    VkDescriptorPoolCreateInfo vkDescriptorPoolCreateInfo;
-
-    // Code
-    fprintf(gpLogFile, "CreateDescriptorPool()  >>>  function started\n");
-
-    // Before Creating Actual Descriptor Pool. Vulkan Expects Descriptor pool size.
-    memset((void *)&vkDescriptorPoolSize, 0, sizeof(VkDescriptorPoolSize));
-
-    vkDescriptorPoolSize.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-    vkDescriptorPoolSize.descriptorCount = 1;
-
-    // Create The Pool
-    memset((void *)&vkDescriptorPoolCreateInfo, 0, sizeof(VkDescriptorPoolCreateInfo));
-    vkDescriptorPoolCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-    vkDescriptorPoolCreateInfo.pNext = NULL;
-    vkDescriptorPoolCreateInfo.flags = 0;
-    vkDescriptorPoolCreateInfo.poolSizeCount = 1;
-    vkDescriptorPoolCreateInfo.pPoolSizes = &vkDescriptorPoolSize;
-    vkDescriptorPoolCreateInfo.maxSets = 1;
-
-    vkResult = vkCreateDescriptorPool(vkDevice, &vkDescriptorPoolCreateInfo, NULL, &vkDescriptorPool);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateDescriptorPool()    =>  vkCreateDescriptorPool() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateDescriptorPool()    =>  vkCreateDescriptorPool() successful \n");
-    }
-
-    fprintf(gpLogFile, "CreateDescriptorPool()  -->  function completed\n");
-    return (vkResult);
-}
-
-VkResult CreateDescriptorSet(void)
-{
-    // Variable Declaration
-    VkResult vkResult = VK_SUCCESS;
-
-    VkDescriptorSetAllocateInfo vkDescriptorSetAllocateInfo;
-    VkDescriptorBufferInfo vkDescriptorBufferInfo;
-    VkWriteDescriptorSet vkWriteDescriptorSet;
-
-    // Code
-    fprintf(gpLogFile, "CreateDescriptorSet()  >>>  function started\n");
-
-    memset((void *)&vkDescriptorSetAllocateInfo, 0, sizeof(VkDescriptorSetAllocateInfo));
-
-    vkDescriptorSetAllocateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
-    vkDescriptorSetAllocateInfo.pNext = NULL;
-    vkDescriptorSetAllocateInfo.descriptorPool = vkDescriptorPool;
-    vkDescriptorSetAllocateInfo.descriptorSetCount = 1;
-    vkDescriptorSetAllocateInfo.pSetLayouts = &vkDescriptorSetLayout;
-
-    vkResult = vkAllocateDescriptorSets(vkDevice, &vkDescriptorSetAllocateInfo, &vkDescriptorSet);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreateDescriptorSet()    =>  vkAllocateDescriptorSets() failed (%d)\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreateDescriptorSet()    =>  vkAllocateDescriptorSets() successful \n");
-    }
-
-    // Describe if we want Buffer as Uniform or Image as Uniform
-
-    // Specify Buffer Info
-    memset((void *)&vkDescriptorBufferInfo, 0, sizeof(VkDescriptorBufferInfo));
-    vkDescriptorBufferInfo.buffer = uniformData.vkBuffer;
-    vkDescriptorBufferInfo.offset = 0;
-    vkDescriptorBufferInfo.range = sizeof(MyUniformData);
-
-    /**
-     *
-     * Now update the above descriptor set to the shader
-     *
-     * We can write or copy to shader
-     *
-     * We will prefer write descriptor set
-     *
-     */
-
-    // Now connect the descriptor set to the actual buffer using write descriptor set
-    memset((void *)&vkWriteDescriptorSet, 0, sizeof(VkWriteDescriptorSet));
-
-    vkWriteDescriptorSet.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-    vkWriteDescriptorSet.pNext = NULL;
-    vkWriteDescriptorSet.dstSet = vkDescriptorSet;
-    vkWriteDescriptorSet.dstArrayElement = 0;
-    vkWriteDescriptorSet.descriptorCount = 1;
-    vkWriteDescriptorSet.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-    vkWriteDescriptorSet.pImageInfo = NULL;
-    vkWriteDescriptorSet.pBufferInfo = &vkDescriptorBufferInfo;
-    vkWriteDescriptorSet.pTexelBufferView = NULL;
-    vkWriteDescriptorSet.dstBinding = 0;
-
-    // ISKA KATA HUA PAANI BHI NAHI MANGTA HAI
-    vkUpdateDescriptorSets(vkDevice, 1, &vkWriteDescriptorSet, 0, NULL);
-
-    fprintf(gpLogFile, "CreateDescriptorSet()  -->  function completed\n");
-    return (vkResult);
-}
-
 VkResult CreateRenderPass(void)
 {
     // Variable Definition
@@ -3218,212 +2304,6 @@ VkResult CreateRenderPass(void)
     return (vkResult);
 }
 
-VkResult CreatePipeline(void)
-{
-    // Variable Definition
-    VkResult vkResult = VK_SUCCESS;
-    VkVertexInputBindingDescription vkVertexInputBindingDescription_array[1];
-    VkVertexInputAttributeDescription vkVertexInputAttributeDescription_array[1];
-    VkPipelineVertexInputStateCreateInfo vkPipelineVertexInputStateCreateInfo;
-    VkPipelineInputAssemblyStateCreateInfo vkPipelineInputAssemblyStateCreateInfo;
-    VkPipelineRasterizationStateCreateInfo vkPipelineRasterizationStateCreateInfo;
-    VkPipelineColorBlendAttachmentState vkPipelineColorBlendAttachmentState_array[1];
-    VkPipelineViewportStateCreateInfo vkPipelineViewportStateCreateInfo;
-    VkPipelineColorBlendStateCreateInfo vkPipelineColorBlendStateCreateInfo;
-    VkPipelineMultisampleStateCreateInfo vkPipelineMultisampleStateCreateInfo;
-    VkPipelineShaderStageCreateInfo vkPipelineShaderStageCreateInfo_array[2];
-    VkPipelineCacheCreateInfo vkPipelineCacheCreateInfo;
-    VkPipelineCache vkPipelineCache = VK_NULL_HANDLE;
-    VkGraphicsPipelineCreateInfo vkGraphicsPipelineCreateInfo;
-
-    // Code
-    fprintf(gpLogFile, "CreatePipeline()  >>>  function started\n");
-
-    // VkVertexInputBindingDescription
-    memset((void *)vkVertexInputBindingDescription_array, 0, sizeof(VkVertexInputBindingDescription) * ARRAYSIZE(vkVertexInputBindingDescription_array));
-    vkVertexInputBindingDescription_array[0].binding = 0;
-    vkVertexInputBindingDescription_array[0].stride = sizeof(float) * 3;
-    vkVertexInputBindingDescription_array[0].inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
-
-    // VkVertexInputAttributeDescription
-    memset((void *)vkVertexInputAttributeDescription_array, 0, sizeof(VkVertexInputAttributeDescription) * ARRAYSIZE(vkVertexInputAttributeDescription_array));
-
-    vkVertexInputAttributeDescription_array[0].binding = 0;
-    vkVertexInputAttributeDescription_array[0].location = 0;
-    vkVertexInputAttributeDescription_array[0].format = VK_FORMAT_R32G32B32_SFLOAT;
-    vkVertexInputAttributeDescription_array[0].offset = 0;
-
-    // Vertex Input State
-    memset((void *)&vkPipelineVertexInputStateCreateInfo, 0, sizeof(VkPipelineVertexInputStateCreateInfo));
-    vkPipelineVertexInputStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-    vkPipelineVertexInputStateCreateInfo.pNext = NULL;
-    vkPipelineVertexInputStateCreateInfo.flags = 0;
-    vkPipelineVertexInputStateCreateInfo.vertexBindingDescriptionCount = ARRAYSIZE(vkVertexInputBindingDescription_array);
-    vkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions = vkVertexInputBindingDescription_array;
-    vkPipelineVertexInputStateCreateInfo.vertexAttributeDescriptionCount = ARRAYSIZE(vkVertexInputAttributeDescription_array);
-    vkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions = vkVertexInputAttributeDescription_array;
-
-    // Input Assembly State
-    memset((void *)&vkPipelineInputAssemblyStateCreateInfo, 0, sizeof(VkPipelineInputAssemblyStateCreateInfo));
-    vkPipelineInputAssemblyStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
-    vkPipelineInputAssemblyStateCreateInfo.pNext = NULL;
-    vkPipelineInputAssemblyStateCreateInfo.flags = 0;
-    vkPipelineInputAssemblyStateCreateInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
-    //  vkPipelineInputAssemblyStateCreateInfo.primitiveRestartEnable = ;
-
-    // Rasterization/Rasterizer State
-    memset((void *)&vkPipelineRasterizationStateCreateInfo, 0, sizeof(VkPipelineRasterizationStateCreateInfo));
-    vkPipelineRasterizationStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
-    vkPipelineRasterizationStateCreateInfo.pNext = NULL;
-    vkPipelineRasterizationStateCreateInfo.flags = 0;
-    vkPipelineRasterizationStateCreateInfo.polygonMode = VK_POLYGON_MODE_FILL;
-    vkPipelineRasterizationStateCreateInfo.cullMode = VK_CULL_MODE_BACK_BIT;
-    vkPipelineRasterizationStateCreateInfo.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
-    vkPipelineRasterizationStateCreateInfo.lineWidth = 1.0f;
-
-    // Color Blend State
-    memset((void *)vkPipelineColorBlendAttachmentState_array, 0, sizeof(VkPipelineColorBlendAttachmentState) * ARRAYSIZE(vkPipelineColorBlendAttachmentState_array));
-
-    vkPipelineColorBlendAttachmentState_array[0].colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT; //  NO VALIDATION | NO ERROR | NO OUTPUT =
-
-    vkPipelineColorBlendAttachmentState_array[0].blendEnable = VK_FALSE;
-
-    memset((void *)&vkPipelineColorBlendStateCreateInfo, 0, sizeof(VkPipelineColorBlendStateCreateInfo));
-    vkPipelineColorBlendStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
-    vkPipelineColorBlendStateCreateInfo.pNext = NULL;
-    vkPipelineColorBlendStateCreateInfo.flags = 0;
-    vkPipelineColorBlendStateCreateInfo.attachmentCount = ARRAYSIZE(vkPipelineColorBlendAttachmentState_array);
-    vkPipelineColorBlendStateCreateInfo.pAttachments = vkPipelineColorBlendAttachmentState_array;
-
-    // Viewport Scissor State
-    memset((void *)&vkPipelineViewportStateCreateInfo, 0, sizeof(VkPipelineViewportStateCreateInfo));
-    vkPipelineViewportStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
-    vkPipelineViewportStateCreateInfo.pNext = NULL;
-    vkPipelineViewportStateCreateInfo.flags = 0;
-
-    memset((void *)&vkViewport, 0, sizeof(VkViewport));
-    vkViewport.x = 0;
-    vkViewport.y = 0;
-    vkViewport.width = (float)vkExtent2D_swapchain.width;
-    vkViewport.height = (float)vkExtent2D_swapchain.height;
-    vkViewport.minDepth = 0.0f;
-    vkViewport.maxDepth = 0.0f;
-
-    vkPipelineViewportStateCreateInfo.viewportCount = 1; // i.e we can specify multiple viewports as array -> MultiViewPort Assignment
-    vkPipelineViewportStateCreateInfo.pViewports = &vkViewport;
-
-    memset((void *)&vkRect2D_scissor, 0, sizeof(VkRect2D));
-    vkRect2D_scissor.offset.x = 0;
-    vkRect2D_scissor.offset.y = 0;
-    vkRect2D_scissor.extent.width = vkExtent2D_swapchain.width;
-    vkRect2D_scissor.extent.height = vkExtent2D_swapchain.height;
-    vkPipelineViewportStateCreateInfo.scissorCount = 1;
-    vkPipelineViewportStateCreateInfo.pScissors = &vkRect2D_scissor;
-
-    // Depth Stencil State
-    // As we dont have depth yet, we can omit this state
-
-    // Dynamic State
-    // We dont have any dynamic state
-
-    // Multi Sample State
-    memset((void *)&vkPipelineMultisampleStateCreateInfo, 0, sizeof(VkPipelineMultisampleStateCreateInfo));
-    vkPipelineMultisampleStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
-    vkPipelineMultisampleStateCreateInfo.pNext = NULL;
-    vkPipelineMultisampleStateCreateInfo.flags = 0;
-    vkPipelineMultisampleStateCreateInfo.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT; // If this is not specified then it will give validation error
-
-    // Shader State
-    memset((void *)vkPipelineShaderStageCreateInfo_array, 0, sizeof(VkPipelineShaderStageCreateInfo) * ARRAYSIZE(vkPipelineShaderStageCreateInfo_array));
-
-    // Vertex Shader
-    vkPipelineShaderStageCreateInfo_array[0].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
-    vkPipelineShaderStageCreateInfo_array[0].pNext = NULL; // This is very important and if NULL not specified then we get Validation Error
-    vkPipelineShaderStageCreateInfo_array[0].flags = 0;
-    vkPipelineShaderStageCreateInfo_array[0].stage = VK_SHADER_STAGE_VERTEX_BIT;
-    vkPipelineShaderStageCreateInfo_array[0].module = vkShaderModule_vertex_shader;
-    vkPipelineShaderStageCreateInfo_array[0].pName = "main";
-    vkPipelineShaderStageCreateInfo_array[0].pSpecializationInfo = NULL;
-
-    // Fragment Shader
-    vkPipelineShaderStageCreateInfo_array[1].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
-    vkPipelineShaderStageCreateInfo_array[1].pNext = NULL; // This is very important and if NULL not specified then we get Validation Error
-    vkPipelineShaderStageCreateInfo_array[1].flags = 0;
-    vkPipelineShaderStageCreateInfo_array[1].stage = VK_SHADER_STAGE_FRAGMENT_BIT;
-    vkPipelineShaderStageCreateInfo_array[1].module = vkShaderModule_fragment_shader;
-    vkPipelineShaderStageCreateInfo_array[1].pName = "main";
-    vkPipelineShaderStageCreateInfo_array[1].pSpecializationInfo = NULL;
-
-    // Tessellation State
-    // We Dont have tessellation shaders so we can omit this state
-
-    // As Pipelines are created from Pipeline Cache, so now we will create pipeline objects
-    memset((void *)&vkPipelineCacheCreateInfo, 0, sizeof(VkPipelineCacheCreateInfo));
-    vkPipelineCacheCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO;
-    vkPipelineCacheCreateInfo.pNext = NULL;
-    vkPipelineCacheCreateInfo.flags = 0;
-
-    vkResult = vkCreatePipelineCache(vkDevice, &vkPipelineCacheCreateInfo, NULL, &vkPipelineCache);
-    if (VK_SUCCESS != vkResult)
-    {
-        fprintf(gpLogFile, "CreatePipeline()    =>  vkCreatePipelineCache() failed %d\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreatePipeline()    =>  vkCreatePipelineCache() successful \n");
-    }
-
-    // Create Graphics Pipeline
-    memset((void *)&vkGraphicsPipelineCreateInfo, 0, sizeof(VkGraphicsPipelineCreateInfo));
-    vkGraphicsPipelineCreateInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
-    vkGraphicsPipelineCreateInfo.pNext = NULL;
-    vkGraphicsPipelineCreateInfo.flags = 0;
-    vkGraphicsPipelineCreateInfo.pVertexInputState = &vkPipelineVertexInputStateCreateInfo;
-    vkGraphicsPipelineCreateInfo.pInputAssemblyState = &vkPipelineInputAssemblyStateCreateInfo;
-    vkGraphicsPipelineCreateInfo.pRasterizationState = &vkPipelineRasterizationStateCreateInfo;
-    vkGraphicsPipelineCreateInfo.pColorBlendState = &vkPipelineColorBlendStateCreateInfo;
-    vkGraphicsPipelineCreateInfo.pViewportState = &vkPipelineViewportStateCreateInfo;
-    vkGraphicsPipelineCreateInfo.pDepthStencilState = NULL;
-    vkGraphicsPipelineCreateInfo.pDynamicState = NULL;
-    vkGraphicsPipelineCreateInfo.pMultisampleState = &vkPipelineMultisampleStateCreateInfo;
-    vkGraphicsPipelineCreateInfo.stageCount = ARRAYSIZE(vkPipelineShaderStageCreateInfo_array);
-    vkGraphicsPipelineCreateInfo.pStages = vkPipelineShaderStageCreateInfo_array;
-    vkGraphicsPipelineCreateInfo.pTessellationState = NULL;
-    vkGraphicsPipelineCreateInfo.layout = vkPipelineLayout;
-    vkGraphicsPipelineCreateInfo.renderPass = vkRenderPass;
-    vkGraphicsPipelineCreateInfo.subpass = 0;
-    vkGraphicsPipelineCreateInfo.basePipelineHandle = VK_NULL_HANDLE;
-    vkGraphicsPipelineCreateInfo.basePipelineIndex = 0;
-
-    // Now create the pipeline
-    vkResult = vkCreateGraphicsPipelines(vkDevice, vkPipelineCache, 1, &vkGraphicsPipelineCreateInfo, NULL, &vkPipeline);
-    if (VK_SUCCESS != vkResult)
-    {
-        vkDestroyPipelineCache(vkDevice, vkPipelineCache, NULL);
-        vkPipelineCache = VK_NULL_HANDLE;
-        fprintf(gpLogFile, "CreatePipeline()  -->  vkDestroyPipelineCache() successful\n");
-
-        fprintf(gpLogFile, "CreatePipeline()    =>  vkCreateGraphicsPipelines() failed %d\n", vkResult);
-        return (vkResult);
-    }
-    else
-    {
-        fprintf(gpLogFile, "CreatePipeline()    =>  vkCreateGraphicsPipelines() successful \n");
-    }
-
-    // We are done using vkPipelineCache so destroy it
-    if (vkPipelineCache)
-    {
-        vkDestroyPipelineCache(vkDevice, vkPipelineCache, NULL);
-        vkPipelineCache = VK_NULL_HANDLE;
-        fprintf(gpLogFile, "CreatePipeline()  -->  vkDestroyPipelineCache() successful\n");
-    }
-
-    fprintf(gpLogFile, "CreatePipeline()  -->  function completed\n");
-    return (vkResult);
-}
-
 VkResult CreateFrameBuffers(void)
 {
     // Variable Definition
@@ -3446,7 +2326,7 @@ VkResult CreateFrameBuffers(void)
     vkFramebufferCreateInfo.pAttachments = vkImageView_attachment_array;
     vkFramebufferCreateInfo.width = vkExtent2D_swapchain.width;
     vkFramebufferCreateInfo.height = vkExtent2D_swapchain.height;
-    vkFramebufferCreateInfo.layers = 1; //  VALIDATION ||> CASE 02
+    vkFramebufferCreateInfo.layers = 1;
 
     vkFramebuffer_array = (VkFramebuffer *)malloc(sizeof(VkFramebuffer) * swapchainImageCount);
     //  FOR THE SAKE OF BREVITY WE AVOID ERROR CHECKIG BUT HERE THERE SHOULD BE ERROR CHECKING FOR MALLOC
@@ -3621,6 +2501,11 @@ VkResult BuildCommandBuffers(void)
         vkRenderPassBeginInfo.framebuffer = vkFramebuffer_array[le];
 
         vkCmdBeginRenderPass(vkCommandBuffer_array[le], &vkRenderPassBeginInfo, VK_SUBPASS_CONTENTS_INLINE);
+
+        //******************************************************************************************************
+        // HERE WE SHOULD CALL VULKAN DRAWING FUNCTION
+        //******************************************************************************************************
+
         vkCmdEndRenderPass(vkCommandBuffer_array[le]);
 
         // End Command Buffer Recording
@@ -3639,28 +2524,3 @@ VkResult BuildCommandBuffers(void)
     fprintf(gpLogFile, "BuildCommandBuffers()  -->  function completed\n");
     return (vkResult);
 }
-
-/***********************************************************************************\
-                                ALWAYS LAST FUNCTION
-\***********************************************************************************/
-VKAPI_ATTR VkBool32 VKAPI_CALL DebugReportCallback(VkDebugReportFlagsEXT vkDebugReportFlagsEXT,
-                                                   VkDebugReportObjectTypeEXT vkDebugReportObjectTypeEXT,
-                                                   uint64_t object,
-                                                   size_t location,
-                                                   int32_t messageCode,
-                                                   const char *pLayerPrefix,
-                                                   const char *pMessage,
-                                                   void *pUserData)
-{
-    // Code
-    // fprintf(gpLogFile, "DebugReportCallback()  ||>  function started\n");
-
-    fprintf(gpLogFile, "MST_VALIDATION : DebugReportCallback()  ||>     %s %d = %s\n", pLayerPrefix, messageCode, pMessage);
-
-    // fprintf(gpLogFile, "DebugReportCallback()  ||>  function completed\n");
-
-    return (VK_FALSE);
-}
-
-/***********************************************************************************\
-\***********************************************************************************/
