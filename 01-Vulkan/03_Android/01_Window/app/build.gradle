@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mv.window'
+    namespace 'com.mv.vulkanwindow'
     compileSdk 35
     // compileSdk {
     //     version = release(37)
@@ -13,7 +13,7 @@ android {
     // ndkVersion "29.0.14206865"
 
     defaultConfig {
-        applicationId "com.mv.window"
+        applicationId "com.mv.vulkanwindow"
         minSdk 24
         targetSdk 35
         versionCode 1
