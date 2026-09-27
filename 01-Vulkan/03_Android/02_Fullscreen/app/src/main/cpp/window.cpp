@@ -136,7 +136,7 @@ void engine_handle_cmd(struct android_app *app, int32_t cmd)
 			androidNativeWindow = engine->app->window;
 			__android_log_print(ANDROID_LOG_INFO, "MST:", "Window initialized\n");
 		
-			// Draw Background Color With Pixel ByPixel Coloring By CPU	
+			// Draw Background Color With Pixel ByPixel Coloring By CPU
 			ANativeWindow_Buffer buffer;
 			uint32_t *pixels = NULL;
 			uint32_t color;
