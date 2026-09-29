@@ -10,6 +10,7 @@
 #include <android/log.h>			 // For android_log_print() -> Android che printf();
 
 #include <memory.h> // for memset()
+#include <math.h>
 
 typedef struct
 {
@@ -21,6 +22,10 @@ ANativeWindow *androidNativeWindow = NULL;
 
 long touchStartTime = 0;
 long pendingSingleTapTime = 0;
+float touchStartX = 0.0f;
+float touchStartY = 0.0f;
+float lastTapX = 0.0f;
+float lastTapY = 0.0f;
 
 // Event Related Global Variables
 bool bTouchDown = false;
@@ -241,6 +246,123 @@ void engine_handle_cmd(struct android_app *app, int32_t cmd)
 int32_t engine_handle_input(struct android_app *app, AInputEvent *event)
 {
 	// Code
+
+	Engine *engine = (Engine *)app->userData;
+
+	int32_t eventType = AInputEvent_getType(event);
+
+	switch(eventType)
+	{
+		case AINPUT_EVENT_TYPE_MOTION:
+		{
+			// Handle motion events
+			int32_t action = AMotionEvent_getAction(event) & AMOTION_EVENT_ACTION_MASK;
+		
+			switch(action)
+			{
+				case AMOTION_EVENT_ACTION_DOWN:
+				{
+					touchStartX = AMotionEvent_getX(event, 0);
+					touchStartY = AMotionEvent_getY(event, 0);
+					struct timespec ts;
+					memset((void*)&ts, 0, sizeof(struct timespec));
+					clock_gettime(CLOCK_MONOTONIC, &ts);
+
+					touchStartTime = (ts.tv_sec * 1000) + (ts.tv_nsec / 1000000);
+					
+					bTouchDown = true;
+					bDragging = false;
+					bLongPressDetected = false;
+					bDoubleTapDetected = false;
+
+					// Check whether the down action is for 2nd tap for double tap
+					if ( true == bPendingSingleTap )
+					{
+						long timeSinceLastTap = touchStartTime - pendingSingleTapTime;
+						float dx = touchStartX - lastTapX;
+						float dy = touchStartY - lastTapY;
+						float distance = sqrtf(dx * dx + dy * dy);
+					
+						if ( timeSinceLastTap < 300 && distance < 100.0f )
+						{
+							// Doubletap Detected
+							bDoubleTapDetected = true;
+							__android_log_print(ANDROID_LOG_INFO, "MST:", "Double tap detected\n");
+						}
+						else
+						{
+							// This is new touch but not for double tap
+						}
+
+						bPendingSingleTap = false;
+					}
+				}
+				break;
+
+				case AMOTION_EVENT_ACTION_MOVE:
+				{
+					float currentX = AMotionEvent_getX(event, 0);
+					float currentY = AMotionEvent_getY(event, 0);
+
+					float dx = currentX - touchStartX;
+					float dy = currentY - touchStartY;
+					float distance = sqrtf(dx * dx + dy * dy);
+
+					if ( distance > 50.0f )
+					{
+						bDragging = true;
+					}	
+				}
+				break;
+
+				case AMOTION_EVENT_ACTION_UP:
+				{
+					struct timespec ts;
+					memset((void*)&ts, 0, sizeof(struct timespec));
+					clock_gettime(CLOCK_MONOTONIC, &ts);
+
+					long currentTime = (ts.tv_sec * 1000) + (ts.tv_nsec / 1000000);
+					long duration = currentTime - touchStartTime;
+
+					float endX = AMotionEvent_getX(event, 0);
+					float endY = AMotionEvent_getY(event, 0);
+					float dx = endX - touchStartX;
+					float dy = endY - touchStartY;
+					float distance = sqrtf(dx * dx + dy * dy);
+
+					bTouchDown = false;
+
+					if ( true == bDoubleTapDetected ) 
+					{
+						// This up belongs to 2nd tap of double tap which we already handled
+					}
+					else if ( true == bLongPressDetected )
+					{
+						// This up belongs to long press which we already handled
+					}
+					else if ( true == bDragging && 150.0f < distance )
+					{
+						// Swipe is detected
+						__android_log_print(ANDROID_LOG_INFO, "MST:", "Swipe detected\n");
+						ANativeActivity_finish(engine->app->activity);
+					}
+					else if ( 300 > duration && 50.0f > distance )
+					{
+						// This is means Short tap is detected and 2nd tap maybe pending.
+						// This maybe up of single tap which we already handled
+						bPendingSingleTap = true;
+						pendingSingleTapTime = currentTime;
+						lastTapX = endX;
+						lastTapY = endY;
+					}
+
+					bDragging = false;
+				}
+				break;
+			}
+		}
+		break;			
+	}
 
 	return (0);
 }
