@@ -13,5 +13,5 @@ layout(binding=0) uniform mvpMatrix
 void main(void)
 {
 	// Code
-	gl_Position = uMVP.viewMatrix * uMVP.projectionMatrix * uMVP.modelMatrix * vPosition;
+	gl_Position = uMVP.projectionMatrix * uMVP.viewMatrix * uMVP.modelMatrix * vPosition;
 }
