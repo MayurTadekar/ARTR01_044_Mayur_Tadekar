@@ -3176,7 +3176,7 @@ VkResult CreateImagesAndImageViews(void)
     vkImageCreateInfo.arrayLayers = 1;
     vkImageCreateInfo.samples = VK_SAMPLE_COUNT_1_BIT;
     vkImageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
-    vkImageCreateInfo.usage = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT;
+    vkImageCreateInfo.usage = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT;
 
     // vkImageCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
     // vkImageCreateInfo.pNext = NULL;
@@ -3223,7 +3223,9 @@ VkResult CreateImagesAndImageViews(void)
     {
         if (1 == (vkMemoryRequirements.memoryTypeBits & 1))
         {
-            if (vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT)
+            // if ((vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT) && 
+            //     (vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT))
+            if (vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & ( VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT | VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT ))
             {
                 vkMemoryAllocateInfo.memoryTypeIndex = le;
                 break;
@@ -3232,6 +3234,8 @@ VkResult CreateImagesAndImageViews(void)
 
         vkMemoryRequirements.memoryTypeBits >>= 1;
     }
+
+    // vkMemoryAllocateInfo.memoryTypeIndex = vkMemoryAllocateInfo.memoryTypeIndex | VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT
 
     vkResult = vkAllocateMemory(vkDevice, &vkMemoryAllocateInfo, NULL, &vkDeviceMemory_depth);
     if (VK_SUCCESS != vkResult)
@@ -4220,7 +4224,9 @@ VkResult CreateTexture(const char *textureFileName, VkImage *vkImage, VkDeviceMe
     {
         if (1 == (vkMemoryRequirements_image.memoryTypeBits & 1))
         {
-            if (vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT)
+            // if ((vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT) && 
+            //     (vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT))
+            if (vkPhysicalDeviceMemoryProperties.memoryTypes[le].propertyFlags & ( VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT | VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT ))
             {
                 vkMemoryAllocateInfo.memoryTypeIndex = le;
                 break;

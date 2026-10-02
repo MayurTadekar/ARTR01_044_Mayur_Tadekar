@@ -4247,7 +4247,7 @@ VkResult CreatePipeline(void)
     vkViewport.width = (float)vkExtent2D_swapchain.width;
     vkViewport.height = (float)vkExtent2D_swapchain.height;
     vkViewport.minDepth = 0.0f;
-    vkViewport.maxDepth = 0.0f;
+    vkViewport.maxDepth = 1.0f;
 
     vkPipelineViewportStateCreateInfo.viewportCount = 1; // i.e we can specify multiple viewports as array -> MultiViewPort Assignment
     vkPipelineViewportStateCreateInfo.pViewports = &vkViewport;
